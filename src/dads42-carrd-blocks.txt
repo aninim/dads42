@@ -1,0 +1,460 @@
+# Dads'42 — Carrd Build Guide
+# Copy-paste blocks for each section of your new landing page
+# ─────────────────────────────────────────────────────────────
+
+======================================================================
+STEP 1 — GLOBAL CSS (Paste this ONCE in the <head>)
+======================================================================
+In Carrd editor:
+→ Click + → Embed → Set Type: Code → Set Style: Hidden → Set Position: Head
+→ Paste everything between the dashes below
+
+──────────────────────────────────────────────────────────────────────
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --black: #0A0A0A;
+  --dark: #111111;
+  --card: #161616;
+  --border: #222222;
+  --gold: #C9A84C;
+  --gold-dim: rgba(201,168,76,0.12);
+  --gold-line: rgba(201,168,76,0.3);
+  --white: #F2EDE4;
+  --muted: #6B6560;
+  --red: #B03A2E;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.4); }
+  50%     { box-shadow: 0 0 0 14px rgba(201,168,76,0); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-10px); }
+}
+
+/* ── Global resets inside embeds ── */
+.d42-block * { box-sizing: border-box; margin: 0; padding: 0; }
+.d42-block { font-family: 'DM Sans', sans-serif; color: var(--white); }
+.d42-heading { font-family: 'Bebas Neue', sans-serif; }
+.d42-serif  { font-family: 'Lora', serif; }
+
+/* ── Shared button ── */
+.d42-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: #0A0A0A !important;
+  text-decoration: none;
+  padding: 18px 44px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  animation: pulse 3s ease infinite;
+}
+.d42-btn:hover {
+  background: #DDB95A;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(201,168,76,0.3);
+}
+
+/* ── Section label ── */
+.d42-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.d42-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  max-width: 80px;
+}
+
+/* ── Divider ── */
+.d42-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #222, transparent);
+  margin: 0;
+}
+</style>
+──────────────────────────────────────────────────────────────────────
+
+
+
+
+======================================================================
+BLOCK 1 — HERO SECTION
+======================================================================
+In Carrd: + → Embed → Type: Code → Style: Inline
+Place this as the FIRST element on your page.
+
+──────────────────────────────────────────────────────────────────────
+<div class="d42-block" style="background:#0A0A0A; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:100px 48px 80px; position:relative; overflow:hidden;">
+
+  <!-- Background glow -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 80%, rgba(201,168,76,0.06) 0%, transparent 70%);pointer-events:none;"></div>
+
+  <!-- Giant ghost number -->
+  <div class="d42-heading" style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:clamp(160px,28vw,340px);line-height:0.85;color:transparent;-webkit-text-stroke:1px rgba(201,168,76,0.1);user-select:none;pointer-events:none;">42</div>
+
+  <!-- Eyebrow -->
+  <div style="font-size:11px;letter-spacing:5px;text-transform:uppercase;color:#C9A84C;margin-bottom:28px;display:flex;align-items:center;gap:14px;animation:fadeUp 0.7s ease both;">
+    <span style="width:36px;height:1px;background:#C9A84C;display:block;"></span>
+    For men who became fathers without a blueprint
+  </div>
+
+  <!-- Headline -->
+  <h1 class="d42-heading" style="font-size:clamp(52px,9vw,108px);line-height:0.95;letter-spacing:2px;max-width:780px;position:relative;z-index:2;animation:fadeUp 0.7s 0.15s ease both;opacity:0;">
+    Nobody<br>
+    <span style="color:#6B6560;position:relative;">
+      Handed
+      <span style="position:absolute;left:0;right:0;top:52%;height:4px;background:#B03A2E;transform:rotate(-1.5deg);display:block;"></span>
+    </span><br>
+    <span style="color:#C9A84C;">You the Manual.</span>
+  </h1>
+
+  <!-- Subheadline -->
+  <p class="d42-serif" style="font-size:clamp(16px,2vw,19px);font-style:italic;line-height:1.75;color:rgba(242,237,228,0.6);max-width:500px;margin:28px 0 48px;position:relative;z-index:2;animation:fadeUp 0.7s 0.3s ease both;opacity:0;">
+    You figured out most of life yourself. Fatherhood was supposed to be different. It wasn't. Now there's a room full of dads who get it.
+  </p>
+
+  <!-- CTA -->
+  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;position:relative;z-index:2;animation:fadeUp 0.7s 0.45s ease both;opacity:0;">
+    <a href="https://www.skool.com/dads42-3659/about" class="d42-btn" target="_blank">
+      Join the Community →
+    </a>
+    <span style="font-size:13px;color:#6B6560;">Free to join · <strong style="color:#F2EDE4;">Dads'42 on Skool</strong></span>
+  </div>
+
+</div>
+──────────────────────────────────────────────────────────────────────
+
+
+
+
+======================================================================
+BLOCK 2 — PAIN / "SOUND FAMILIAR" SECTION
+======================================================================
+In Carrd: + → Embed → Type: Code → Style: Inline
+
+──────────────────────────────────────────────────────────────────────
+<div class="d42-block" style="background:#0A0A0A; padding:80px 48px;">
+
+  <div class="d42-label">Sound familiar</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+
+    <div style="padding:32px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+      <div style="font-size:11px;letter-spacing:2px;color:#B03A2E;margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span>✗</span> Still here?</div>
+      <p class="d42-serif" style="font-size:17px;line-height:1.55;color:#F2EDE4;">You love your kids more than anything. But some nights you wonder if you're actually <em style="color:#6B6560;">doing it right.</em></p>
+    </div>
+
+    <div style="padding:32px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+      <div style="font-size:11px;letter-spacing:2px;color:#B03A2E;margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span>✗</span> Still here?</div>
+      <p class="d42-serif" style="font-size:17px;line-height:1.55;color:#F2EDE4;">Your own dad wasn't exactly a <em style="color:#6B6560;">role model.</em> So you're building the plane while flying it.</p>
+    </div>
+
+    <div style="padding:32px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+      <div style="font-size:11px;letter-spacing:2px;color:#B03A2E;margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span>✗</span> Still here?</div>
+      <p class="d42-serif" style="font-size:17px;line-height:1.55;color:#F2EDE4;">Every parenting account feels like it's talking to <em style="color:#6B6560;">someone else.</em> Too soft. Too clinical. Too much.</p>
+    </div>
+
+    <div style="padding:32px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+      <div style="font-size:11px;letter-spacing:2px;color:#B03A2E;margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span>✗</span> Still here?</div>
+      <p class="d42-serif" style="font-size:17px;line-height:1.55;color:#F2EDE4;">You don't need therapy. You need a <em style="color:#6B6560;">real conversation</em> with a dad who's been in the same trench.</p>
+    </div>
+
+  </div>
+</div>
+──────────────────────────────────────────────────────────────────────
+
+
+
+
+======================================================================
+BLOCK 3 — IDENTITY / "YOU'RE NOT LOST" SECTION
+======================================================================
+In Carrd: + → Embed → Type: Code → Style: Inline
+
+──────────────────────────────────────────────────────────────────────
+<div class="d42-block" style="background:#111;border-top:1px solid #222;border-bottom:1px solid #222;padding:80px 48px;">
+  <div style="max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
+
+    <h2 class="d42-heading" style="font-size:clamp(44px,6vw,80px);line-height:0.95;letter-spacing:1px;">
+      You're Not<br>
+      <span style="color:#C9A84C;">Lost.</span><br>
+      You're<br>
+      Self-Guided.
+    </h2>
+
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      <p class="d42-serif" style="font-size:17px;line-height:1.8;color:rgba(242,237,228,0.65);">
+        There's a difference between a dad who <strong style="color:#F2EDE4;">gave up</strong> and a dad who never had a map to begin with. You showed up anyway. You're still asking questions.
+      </p>
+      <div style="border-left:3px solid #C9A84C;padding:18px 24px;background:rgba(201,168,76,0.08);border-radius:0 4px 4px 0;">
+        <p class="d42-serif" style="font-size:18px;font-style:italic;line-height:1.65;color:#F2EDE4;">
+          "42 is the answer to life, the universe, and everything. The problem is nobody knew the question. Fatherhood is exactly like that."
+        </p>
+      </div>
+      <p class="d42-serif" style="font-size:17px;line-height:1.8;color:rgba(242,237,228,0.65);">
+        Dads'42 isn't about becoming softer. It's about becoming a <strong style="color:#F2EDE4;">more capable, more grounded father</strong> — on your own terms.
+      </p>
+    </div>
+
+  </div>
+</div>
+──────────────────────────────────────────────────────────────────────
+
+
+
+
+======================================================================
+BLOCK 4 — WHY "42" SECTION
+======================================================================
+In Carrd: + → Embed → Type: Code → Style: Inline
+
+──────────────────────────────────────────────────────────────────────
+<div class="d42-block" style="background:#0A0A0A;padding:80px 48px;">
+  <div style="max-width:1060px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:64px;align-items:start;">
+
+    <div class="d42-heading" style="font-size:clamp(100px,16vw,200px);line-height:1;color:transparent;-webkit-text-stroke:2px #C9A84C;opacity:0.5;animation:float 6s ease-in-out infinite;flex-shrink:0;">42</div>
+
+    <div style="padding-top:16px;">
+      <div class="d42-label">The name</div>
+      <h2 class="d42-heading" style="font-size:clamp(36px,4vw,56px);line-height:1.05;letter-spacing:1px;margin-bottom:20px;">
+        The <span style="color:#C9A84C;">Answer</span> You're<br>Looking For
+      </h2>
+      <p class="d42-serif" style="font-size:16px;line-height:1.8;color:rgba(242,237,228,0.65);margin-bottom:14px;">
+        In <em>The Hitchhiker's Guide to the Galaxy</em>, a supercomputer spends 7.5 million years calculating <strong style="color:#F2EDE4;">the answer to life, the universe, and everything.</strong> The answer is 42.
+      </p>
+      <p class="d42-serif" style="font-size:16px;line-height:1.8;color:rgba(242,237,228,0.65);margin-bottom:14px;">
+        The catch? <strong style="color:#F2EDE4;">Nobody knew what the question was.</strong>
+      </p>
+      <p class="d42-serif" style="font-size:16px;line-height:1.8;color:rgba(242,237,228,0.65);">
+        That's fatherhood. Dads'42 is the community where we figure out the questions together.
+      </p>
+    </div>
+
+  </div>
+</div>
+──────────────────────────────────────────────────────────────────────
+
+
+
+
+======================================================================
+BLOCK 5 — WHAT'S INSIDE THE COMMUNITY
+======================================================================
+In Carrd: + → Embed → Type: Code → Style: Inline
+
+──────────────────────────────────────────────────────────────────────
+<div class="d42-block" style="background:#111;border-top:1px solid #222;border-bottom:1px solid #222;padding:80px 48px;">
+  <div style="max-width:1060px;margin:0 auto;">
+
+    <div class="d42-label">Inside the community</div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+
+      <div style="padding:36px 28px;background:#161616;border:1px solid #222;position:relative;overflow:hidden;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+        <div style="font-size:26px;margin-bottom:16px;">🔥</div>
+        <div class="d42-heading" style="font-size:22px;letter-spacing:1px;margin-bottom:10px;">Real Conversations</div>
+        <p style="font-size:13px;line-height:1.7;color:#6B6560;">No performance. No perfect dads. Honest discussion from men who are actively in it — not coaches selling a fantasy.</p>
+      </div>
+
+      <div style="padding:36px 28px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+        <div style="font-size:26px;margin-bottom:16px;">🛠️</div>
+        <div class="d42-heading" style="font-size:22px;letter-spacing:1px;margin-bottom:10px;">Practical Guides</div>
+        <p style="font-size:13px;line-height:1.7;color:#6B6560;">Short, tactical resources on the real stuff — discipline, presence, identity, mental load, raising boys. No fluff.</p>
+      </div>
+
+      <div style="padding:36px 28px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+        <div style="font-size:26px;margin-bottom:16px;">📞</div>
+        <div class="d42-heading" style="font-size:22px;letter-spacing:1px;margin-bottom:10px;">Live Calls</div>
+        <p style="font-size:13px;line-height:1.7;color:#6B6560;">Weekly conversations. Ask the thing you can't Google. Say the thing you can't say anywhere else.</p>
+      </div>
+
+      <div style="padding:36px 28px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+        <div style="font-size:26px;margin-bottom:16px;">🤝</div>
+        <div class="d42-heading" style="font-size:22px;letter-spacing:1px;margin-bottom:10px;">A Tribe</div>
+        <p style="font-size:13px;line-height:1.7;color:#6B6560;">Not an audience. Not followers. Men who are building the same thing, side by side.</p>
+      </div>
+
+      <div style="padding:36px 28px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+        <div style="font-size:26px;margin-bottom:16px;">📚</div>
+        <div class="d42-heading" style="font-size:22px;letter-spacing:1px;margin-bottom:10px;">Knowledge Vault</div>
+        <p style="font-size:13px;line-height:1.7;color:#6B6560;">Curated frameworks and resources — organized so you can find what you need, when you need it.</p>
+      </div>
+
+      <div style="padding:36px 28px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+        <div style="font-size:26px;margin-bottom:16px;">🎯</div>
+        <div class="d42-heading" style="font-size:22px;letter-spacing:1px;margin-bottom:10px;">1-on-1 Access</div>
+        <p style="font-size:13px;line-height:1.7;color:#6B6560;">Book a direct call with Oren. Not a funnel. A real conversation about your specific situation.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+──────────────────────────────────────────────────────────────────────
+
+
+
+
+======================================================================
+BLOCK 6 — "THIS IS FOR YOU IF" SECTION
+======================================================================
+In Carrd: + → Embed → Type: Code → Style: Inline
+
+──────────────────────────────────────────────────────────────────────
+<div class="d42-block" style="background:#0A0A0A;padding:80px 48px;">
+  <div style="max-width:860px;margin:0 auto;">
+
+    <div class="d42-label">This is for you if</div>
+
+    <div style="display:flex;flex-direction:column;gap:2px;">
+
+      <div style="display:flex;align-items:flex-start;gap:20px;padding:22px 26px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+        <span class="d42-heading" style="font-size:28px;color:#C9A84C;opacity:0.4;flex-shrink:0;line-height:1;">01</span>
+        <p class="d42-serif" style="font-size:17px;line-height:1.55;color:#F2EDE4;">You became a father without a strong male role model. <em style="color:#6B6560;">You're building from scratch and you know it.</em></p>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:20px;padding:22px 26px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+        <span class="d42-heading" style="font-size:28px;color:#C9A84C;opacity:0.4;flex-shrink:0;line-height:1;">02</span>
+        <p class="d42-serif" style="font-size:17px;line-height:1.55;color:#F2EDE4;">You're done with parenting content that feels like it was written for someone else. <em style="color:#6B6560;">You need real, not curated.</em></p>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:20px;padding:22px 26px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+        <span class="d42-heading" style="font-size:28px;color:#C9A84C;opacity:0.4;flex-shrink:0;line-height:1;">03</span>
+        <p class="d42-serif" style="font-size:17px;line-height:1.55;color:#F2EDE4;">You want to be a better dad than you had — on your own terms, not someone else's Instagram version of fatherhood.</p>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:20px;padding:22px 26px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+        <span class="d42-heading" style="font-size:28px;color:#C9A84C;opacity:0.4;flex-shrink:0;line-height:1;">04</span>
+        <p class="d42-serif" style="font-size:17px;line-height:1.55;color:#F2EDE4;">You feel the loneliness nobody talks about. <em style="color:#6B6560;">The late nights. The invisible weight. The questions with no answers.</em></p>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:20px;padding:22px 26px;background:#161616;border:1px solid #222;transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseleave="this.style.borderColor='#222'">
+        <span class="d42-heading" style="font-size:28px;color:#C9A84C;opacity:0.4;flex-shrink:0;line-height:1;">05</span>
+        <p class="d42-serif" style="font-size:17px;line-height:1.55;color:#F2EDE4;">You're ready to stop figuring it out alone. Not because you're weak — <em style="color:#6B6560;">because you're smart enough to know you don't have to.</em></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+──────────────────────────────────────────────────────────────────────
+
+
+
+
+======================================================================
+BLOCK 7 — FINAL CTA SECTION
+======================================================================
+In Carrd: + → Embed → Type: Code → Style: Inline
+Place this as the LAST section before your footer.
+
+──────────────────────────────────────────────────────────────────────
+<div class="d42-block" style="background:#0A0A0A;padding:100px 48px;text-align:center;position:relative;overflow:hidden;">
+
+  <!-- Glow -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);pointer-events:none;"></div>
+
+  <h2 class="d42-heading" style="font-size:clamp(48px,8vw,96px);line-height:0.95;letter-spacing:2px;position:relative;z-index:2;max-width:780px;margin:0 auto 28px;">
+    Stop Scrolling.<br>
+    <span style="color:#C9A84C;">Start Building.</span>
+  </h2>
+
+  <p class="d42-serif" style="font-size:18px;font-style:italic;color:rgba(242,237,228,0.5);max-width:440px;margin:0 auto 52px;line-height:1.7;position:relative;z-index:2;">
+    The room exists. The dads are in it. The only question is whether you walk in.
+  </p>
+
+  <div style="display:flex;flex-direction:column;align-items:center;gap:14px;position:relative;z-index:2;">
+    <a href="https://www.skool.com/dads42-3659/about" class="d42-btn" target="_blank" style="padding:22px 56px;font-size:15px;letter-spacing:3px;">
+      Join Dads'42 Free →
+    </a>
+    <span style="font-size:12px;color:#3A3530;letter-spacing:1px;">Free to join · No spam · Just dads doing the work</span>
+  </div>
+
+</div>
+──────────────────────────────────────────────────────────────────────
+
+
+
+
+======================================================================
+MOBILE CSS PATCH (Optional but recommended)
+======================================================================
+In Carrd: + → Embed → Type: Code → Style: Hidden → Position: Head
+Add this as a SECOND head embed after the global CSS.
+
+──────────────────────────────────────────────────────────────────────
+<style>
+@media (max-width: 680px) {
+  /* Hero */
+  .d42-block { padding-left: 24px !important; padding-right: 24px !important; }
+
+  /* 2-col grids → 1-col */
+  .d42-block div[style*="grid-template-columns:1fr 1fr"],
+  .d42-block div[style*="grid-template-columns:repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Hide ghost 42 in hero on mobile */
+  .d42-block div[style*="-webkit-text-stroke:1px rgba(201,168,76,0.1)"] {
+    display: none !important;
+  }
+
+  /* Shrink floating 42 */
+  .d42-block div[style*="-webkit-text-stroke:2px #C9A84C"] {
+    display: none !important;
+  }
+}
+</style>
+──────────────────────────────────────────────────────────────────────
+
+
+
+
+======================================================================
+BUILD ORDER IN CARRD (drag to reorder)
+======================================================================
+
+  [HEAD] 1. Global CSS embed (hidden, head)
+  [HEAD] 2. Mobile CSS patch (hidden, head)
+  ────────────────────────────────
+  [PAGE] Block 1 — Hero
+  [PAGE] Block 2 — Pain / Sound Familiar
+  [PAGE] Block 3 — You're Not Lost
+  [PAGE] Block 4 — Why 42
+  [PAGE] Block 5 — What's Inside
+  [PAGE] Block 6 — This Is For You If
+  [PAGE] Block 7 — Final CTA
+  ────────────────────────────────
+  [PAGE] Your Carrd footer (social links etc.)
+
+======================================================================
+TIPS
+======================================================================
+• Set your Carrd page background to #0A0A0A so there are no white gaps
+• Set padding/margin on all sections to 0 in Carrd's settings — the
+  HTML blocks handle their own spacing
+• If fonts don't load, make sure your Carrd site allows external scripts
+• Pro plan required for custom embed code on Carrd

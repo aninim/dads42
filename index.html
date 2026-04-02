@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dads'42 — Nobody Handed You the Manual. We Built One.</title>
+<meta name="description" content="A private community for dads who figured out life themselves — and refuse to wing fatherhood. Grounded in science, philosophy, and real talk. Free to join.">
+<meta property="og:title" content="Dads'42 — Nobody Handed You the Manual.">
+<meta property="og:description" content="A private community for dads who figured out life themselves — and refuse to wing fatherhood. Free to join on Skool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dads42.com">
+<meta property="og:image" content="https://dads42.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dads'42 — Nobody Handed You the Manual.">
+<meta name="twitter:description" content="A private community for dads who figured out life themselves — and refuse to wing fatherhood.">
+<meta name="twitter:image" content="https://dads42.com/og-image.jpg">
+<link rel="canonical" href="https://dads42.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0A0A0A;
+    --dark: #111111;
+    --card: #161616;
+    --border: #222222;
+    --gold: #C9A84C;
+    --gold-dim: rgba(201,168,76,0.15);
+    --gold-line: rgba(201,168,76,0.3);
+    --white: #F2EDE4;
+    --muted: #6B6560;
+    --red: #B03A2E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.4;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes lineGrow {
+    from { width: 0; }
+    to   { width: 60px; }
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.4); }
+    50%       { box-shadow: 0 0 0 12px rgba(201,168,76,0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
+  .delay-4 { animation-delay: 0.55s; }
+  .delay-5 { animation-delay: 0.7s; }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── REDUCED MOTION ─── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+    .fade-up { opacity: 1; transform: none; }
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--gold);
+  }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold-line);
+    color: var(--gold);
+    padding: 10px 24px;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 80%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 20%, rgba(176,58,46,0.04) 0%, transparent 60%);
+  }
+
+  .hero-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(180px, 30vw, 360px);
+    line-height: 0.85;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,168,76,0.12);
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    animation: lineGrow 1s ease 0.3s both;
+  }
+
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 9vw, 110px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-headline .accent {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .hero-headline .strike {
+    position: relative;
+    color: var(--muted);
+  }
+  .hero-headline .strike::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    height: 3px;
+    background: var(--red);
+    transform: rotate(-2deg);
+  }
+
+  .hero-sub {
+    font-family: 'Lora', serif;
+    font-size: clamp(17px, 2vw, 20px);
+    font-style: italic;
+    line-height: 1.7;
+    color: rgba(242,237,228,0.6);
+    max-width: 520px;
+    margin: 32px 0 52px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--gold);
+    color: var(--black);
+    text-decoration: none;
+    padding: 18px 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.2s;
+    animation: pulse 3s ease infinite;
+  }
+  .btn-primary:hover {
+    background: #E0BD6A;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.3);
+  }
+
+  .btn-primary .arrow {
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .hero-proof {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .hero-proof strong { color: var(--white); }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 0 48px;
+  }
+
+  /* ─── SECTION LABEL ─── */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 80px;
+  }
+
+  /* ─── PAIN SECTION ─── */
+  .pain-section {
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .pain-item {
+    padding: 32px 36px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .pain-item:hover {
+    border-color: var(--gold-line);
+    background: #1A1A1A;
+  }
+
+  .pain-check {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--red);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pain-check::before {
+    content: '✗';
+    font-size: 14px;
+  }
+
+  .pain-text {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--white);
+  }
+
+  .pain-text em {
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  /* ─── IDENTITY SECTION ─── */
+  .identity-section {
+    padding: 100px 48px;
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .identity-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .identity-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(44px, 6vw, 80px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+  }
+
+  .identity-headline .gold { color: var(--gold); }
+
+  .identity-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .identity-para {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: rgba(242,237,228,0.7);
+  }
+
+  .identity-para strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .quote-block {
+    border-left: 3px solid var(--gold);
+    padding: 20px 28px;
+    background: var(--gold-dim);
+    border-radius: 0 4px 4px 0;
+    margin: 8px 0;
+  }
+
+  .quote-block p {
+    font-family: 'Lora', serif;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--white);
+  }
+
+  /* ─── WHY 42 ─── */
+  .why-section {
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .big-42 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 200px;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--gold);
+    opacity: 0.6;
+    animation: float 6s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  .why-content { padding-top: 20px; }
+
+  .why-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 4vw, 56px);
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+
+  .why-title .gold { color: var(--gold); }
+
+  .why-body {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: rgba(242,237,228,0.65);
+    margin-bottom: 16px;
+  }
+
+  .why-body strong { color: var(--white); }
+
+  /* ─── WHAT'S INSIDE ─── */
+  .inside-section {
+    padding: 100px 48px;
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .inside-inner { max-width: 1100px; margin: 0 auto; }
+
+  .inside-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .inside-card {
+    padding: 40px 32px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .inside-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .inside-card:hover::before { transform: scaleX(1); }
+  .inside-card:hover { border-color: var(--gold-line); background: #1A1A1A; }
+
+  .card-icon {
+    font-size: 28px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .card-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* ─── ABOUT THE CREATOR ─── */
+  .creator-section {
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .creator-inner {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .creator-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: var(--gold);
+    opacity: 0.3;
+  }
+
+  .creator-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 4vw, 52px);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .creator-name .gold { color: var(--gold); }
+
+  .creator-title {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .creator-bio {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: rgba(242,237,228,0.7);
+    margin-bottom: 16px;
+  }
+
+  .creator-bio strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .creator-credentials {
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  .credential {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .credential-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .credential-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ─── FOR YOU IF ─── */
+  .foryou-section {
+    padding: 100px 48px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .foryou-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .foryou-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+  .foryou-item:hover { border-color: var(--gold-line); }
+
+  .foryou-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--gold);
+    opacity: 0.4;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 2px;
+  }
+
+  .foryou-text {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--white);
+  }
+
+  .foryou-text em {
+    font-style: italic;
+    color: rgba(242,237,228,0.55);
+  }
+
+  /* NOT FOR YOU */
+  .notforyou-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-top: 48px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .notforyou-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(176,58,46,0.3);
+    max-width: 80px;
+  }
+
+  .notforyou-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .notforyou-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 28px;
+    background: var(--card);
+    border: 1px solid rgba(176,58,46,0.15);
+  }
+
+  .notforyou-x {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--red);
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 2px;
+  }
+
+  .notforyou-text {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  /* ─── LEAD MAGNET / EMAIL CAPTURE ─── */
+  .leadmagnet-section {
+    padding: 100px 48px;
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .leadmagnet-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .leadmagnet-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .leadmagnet-headline .gold { color: var(--gold); }
+
+  .leadmagnet-sub {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: rgba(242,237,228,0.55);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .leadmagnet-features {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+
+  .leadmagnet-feat {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .leadmagnet-feat::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .leadmagnet-form {
+    display: flex;
+    gap: 0;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .leadmagnet-form input[type="email"] {
+    flex: 1;
+    padding: 16px 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-right: none;
+    border-radius: 2px 0 0 2px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .leadmagnet-form input[type="email"]::placeholder {
+    color: var(--muted);
+  }
+
+  .leadmagnet-form input[type="email"]:focus {
+    border-color: var(--gold-line);
+  }
+
+  .leadmagnet-form button {
+    padding: 16px 28px;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    border-radius: 0 2px 2px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .leadmagnet-form button:hover {
+    background: #E0BD6A;
+  }
+
+  .leadmagnet-trust {
+    font-size: 11px;
+    color: #444;
+    margin-top: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-section {
+    padding: 100px 48px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .faq-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 24px 28px;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: color 0.2s;
+  }
+
+  .faq-question:hover { color: var(--gold); }
+
+  .faq-question:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: -2px;
+  }
+
+  .faq-toggle {
+    font-size: 20px;
+    color: var(--gold);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-toggle {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+  }
+
+  .faq-answer-inner {
+    padding: 0 28px 24px;
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(242,237,228,0.6);
+  }
+
+  /* ─── FINAL CTA ─── */
+  .cta-section {
+    padding: 120px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+  }
+
+  .cta-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 100px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto 32px;
+  }
+
+  .cta-headline .gold { color: var(--gold); }
+
+  .cta-sub {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(242,237,228,0.5);
+    max-width: 480px;
+    margin: 0 auto 56px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-btn-wrap {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn-big {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--gold);
+    color: var(--black);
+    text-decoration: none;
+    padding: 22px 56px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.2s;
+    animation: pulse 3s ease infinite;
+  }
+
+  .btn-big:hover {
+    background: #E0BD6A;
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(201,168,76,0.35);
+  }
+
+  .cta-micro {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 40px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: #333;
+  }
+
+  /* ─── STICKY MOBILE CTA ─── */
+  .sticky-cta {
+    display: none;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-number { font-size: 200px; opacity: 0.08; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .identity-inner { grid-template-columns: 1fr; gap: 40px; }
+    .why-section { grid-template-columns: 1fr; gap: 0; }
+    .big-42 { font-size: 100px; display: none; }
+    .inside-grid { grid-template-columns: 1fr; }
+    .creator-inner { grid-template-columns: 1fr; }
+    .creator-photo { width: 120px; height: 120px; font-size: 48px; }
+    .creator-credentials { gap: 24px; }
+    .leadmagnet-form { flex-direction: column; }
+    .leadmagnet-form input[type="email"] { border-right: 1px solid var(--border); border-radius: 2px; }
+    .leadmagnet-form button { border-radius: 2px; padding: 16px; }
+    .leadmagnet-features { flex-direction: column; align-items: center; gap: 12px; }
+    .pain-section, .inside-section, .foryou-section, .cta-section, .why-section, .faq-section, .creator-section { padding: 60px 24px; }
+    .identity-section, .leadmagnet-section { padding: 60px 24px; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 20px; text-align: center; }
+
+    .sticky-cta {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 12px 24px;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      justify-content: center;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .sticky-cta.visible {
+      transform: translateY(0);
+    }
+
+    .sticky-cta a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 400px;
+      padding: 14px 24px;
+      background: var(--gold);
+      color: var(--black);
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+
+    footer { padding-bottom: 80px; }
+  }
+
+  /* ─── FOCUS INDICATORS ─── */
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* ─── SKIP LINK ─── */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--gold);
+    color: var(--black);
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    z-index: 200;
+    border-radius: 2px;
+    text-decoration: none;
+  }
+  .skip-link:focus {
+    top: 16px;
+  }
+</style>
+</head>
+<body>
+
+<!-- SKIP LINK -->
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav-logo">DADS'42</div>
+  <a href="https://www.skool.com/dads42-3659/about" class="nav-cta" target="_blank" rel="noopener">Join Free →</a>
+</nav>
+
+<!-- HERO -->
+<main id="main">
+<section class="hero" aria-label="Hero">
+  <div class="hero-bg"></div>
+  <div class="hero-number" aria-hidden="true">42</div>
+
+  <div class="hero-eyebrow fade-up delay-1">For men who became fathers without a blueprint</div>
+
+  <h1 class="hero-headline fade-up delay-2">
+    Nobody<br>
+    <span class="strike">Handed</span><br>
+    <span class="accent">You the Manual.</span>
+  </h1>
+
+  <p class="hero-sub fade-up delay-3">
+    You figured out most of life yourself. Fatherhood was supposed to be different. It wasn't. Now there's a room full of dads who get it.
+  </p>
+
+  <div class="hero-cta-group fade-up delay-4">
+    <a href="https://www.skool.com/dads42-3659/about" class="btn-primary" target="_blank" rel="noopener">
+      Join the Community
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <span class="hero-proof">Free to join · <strong>Dads'42 on Skool</strong></span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section" aria-label="Common struggles">
+  <div class="section-label reveal">Sound familiar</div>
+
+  <div class="pain-grid">
+    <div class="pain-item reveal">
+      <div class="pain-check">Still here?</div>
+      <p class="pain-text">You love your kids more than anything. But some nights you wonder if you're actually <em>doing it right.</em></p>
+    </div>
+    <div class="pain-item reveal">
+      <div class="pain-check">Still here?</div>
+      <p class="pain-text">Your own dad wasn't exactly a <em>role model.</em> So you're building the plane while flying it.</p>
+    </div>
+    <div class="pain-item reveal">
+      <div class="pain-check">Still here?</div>
+      <p class="pain-text">Every parenting account feels like it's talking to <em>someone else.</em> Too soft. Too clinical. Too much.</p>
+    </div>
+    <div class="pain-item reveal">
+      <div class="pain-check">Still here?</div>
+      <p class="pain-text">You don't need therapy. You need a <em>real conversation</em> with a dad who's been in the same trench.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- IDENTITY SECTION -->
+<section class="identity-section" aria-label="Identity">
+  <div class="identity-inner">
+    <h2 class="identity-headline reveal">
+      You're Not<br>
+      <span class="gold">Lost.</span><br>
+      You're<br>
+      Self-Guided.
+    </h2>
+
+    <div class="identity-body">
+      <p class="identity-para reveal">
+        There's a difference between a dad who <strong>gave up</strong> and a dad who never had a map to begin with. You showed up anyway. You figured things out. You're still here, still asking questions.
+      </p>
+
+      <div class="quote-block reveal">
+        <p>"42 is the answer to life, the universe, and everything. The problem is nobody knew the question. Fatherhood is exactly like that."</p>
+      </div>
+
+      <p class="identity-para reveal">
+        Dads'42 isn't about becoming a <strong>gentler, softer, more emotionally available version</strong> of yourself. It's about becoming a <strong>more capable, more grounded, more intentional father</strong> — on your own terms.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY 42 -->
+<section class="why-section" aria-label="Why 42">
+  <div class="big-42" aria-hidden="true">42</div>
+  <div class="why-content">
+    <div class="section-label reveal">The name</div>
+    <h2 class="why-title reveal">The <span class="gold">Answer</span> You're<br>Looking For</h2>
+    <p class="why-body reveal">
+      In <em>The Hitchhiker's Guide to the Galaxy</em>, a supercomputer spends 7.5 million years calculating <strong>the answer to life, the universe, and everything.</strong> The answer is 42.
+    </p>
+    <p class="why-body reveal">
+      The catch? <strong>Nobody knew what the question was.</strong>
+    </p>
+    <p class="why-body reveal">
+      That's fatherhood. You get this enormous responsibility — raising a human being — and the question keeps changing. What kind of dad do I want to be? Am I enough? What did I miss? Dads'42 is the community where we figure out the questions together.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT'S INSIDE -->
+<section class="inside-section" aria-label="What's inside the community">
+  <div class="inside-inner">
+    <div class="section-label reveal">Inside the community</div>
+
+    <div class="inside-grid">
+      <div class="inside-card reveal">
+        <span class="card-icon" aria-hidden="true">🔥</span>
+        <div class="card-title">Real Conversations</div>
+        <p class="card-desc">No performance. No perfect dads. Just honest discussion from men who are actively in it — not coaches selling you a fantasy.</p>
+      </div>
+      <div class="inside-card reveal">
+        <span class="card-icon" aria-hidden="true">🛠️</span>
+        <div class="card-title">Practical Guides</div>
+        <p class="card-desc">Short, tactical resources on the real stuff — discipline, presence, identity, mental load, raising boys, co-parenting. No fluff.</p>
+      </div>
+      <div class="inside-card reveal">
+        <span class="card-icon" aria-hidden="true">📞</span>
+        <div class="card-title">Live Calls</div>
+        <p class="card-desc">Weekly conversations with the community and guests. Ask the thing you can't Google. Say the thing you can't say anywhere else.</p>
+      </div>
+      <div class="inside-card reveal">
+        <span class="card-icon" aria-hidden="true">🤝</span>
+        <div class="card-title">A Tribe</div>
+        <p class="card-desc">The dads in this room are your people. Not an audience. Not followers. Men who are building the same thing, side by side.</p>
+      </div>
+      <div class="inside-card reveal">
+        <span class="card-icon" aria-hidden="true">📚</span>
+        <div class="card-title">Knowledge Vault</div>
+        <p class="card-desc">Curated content, frameworks, and resources — organized so you can actually find what you need, when you need it.</p>
+      </div>
+      <div class="inside-card reveal">
+        <span class="card-icon" aria-hidden="true">🎯</span>
+        <div class="card-title">1-on-1 Access</div>
+        <p class="card-desc">Book a direct call with Oren. Not a funnel. Not a form. A real conversation to work through your specific situation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT THE CREATOR -->
+<section class="creator-section" aria-label="About the creator">
+  <div class="section-label reveal">The dad behind this</div>
+
+  <div class="creator-inner">
+    <div class="creator-photo" aria-label="Oren Elimelech photo placeholder">O</div>
+
+    <div>
+      <h2 class="creator-name reveal">Oren <span class="gold">Elimelech</span></h2>
+      <div class="creator-title reveal">Father · Engineer · Builder</div>
+
+      <p class="creator-bio reveal">
+        Three boys under one roof. No manual. No role model to copy from. Just a decision: <strong>figure it out or repeat the cycle.</strong>
+      </p>
+
+      <p class="creator-bio reveal">
+        By day, I lead a data and validation team in computer vision. I hold two patents. I've spent my career solving complex systems — hardware, software, product. But nothing I've ever engineered is as hard as <strong>being the father I never had.</strong>
+      </p>
+
+      <p class="creator-bio reveal">
+        Dads'42 isn't a brand I built. It's the room I needed and couldn't find. So I built it. Grounded in <strong>Anna Machin's evolutionary science</strong>, <strong>Marcus Aurelius's accountability</strong>, and <strong>Alfred Adler's psychology</strong> — because fatherhood deserves more than vibes and hashtags.
+      </p>
+
+      <div class="creator-credentials reveal">
+        <div class="credential">
+          <div class="credential-num">3</div>
+          <div class="credential-label">Sons</div>
+        </div>
+        <div class="credential">
+          <div class="credential-num">2</div>
+          <div class="credential-label">Patents</div>
+        </div>
+        <div class="credential">
+          <div class="credential-num">5</div>
+          <div class="credential-label">Pillars</div>
+        </div>
+        <div class="credential">
+          <div class="credential-num">25</div>
+          <div class="credential-label">Video Scripts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOR YOU IF -->
+<section class="foryou-section" aria-label="Who this is for">
+  <div class="section-label reveal">This is for you if</div>
+
+  <ul class="foryou-list">
+    <li class="foryou-item reveal">
+      <span class="foryou-num" aria-hidden="true">01</span>
+      <p class="foryou-text">You became a father without a strong male role model. <em>You're building from scratch and you know it.</em></p>
+    </li>
+    <li class="foryou-item reveal">
+      <span class="foryou-num" aria-hidden="true">02</span>
+      <p class="foryou-text">You're done with parenting content that feels like it was written for someone else. <em>You need real, not curated.</em></p>
+    </li>
+    <li class="foryou-item reveal">
+      <span class="foryou-num" aria-hidden="true">03</span>
+      <p class="foryou-text">You want to be a better dad than you had — but on your own terms, not someone else's Instagram version of fatherhood.</p>
+    </li>
+    <li class="foryou-item reveal">
+      <span class="foryou-num" aria-hidden="true">04</span>
+      <p class="foryou-text">You feel the loneliness that nobody talks about. <em>The late nights. The invisible weight. The questions with no answers.</em></p>
+    </li>
+    <li class="foryou-item reveal">
+      <span class="foryou-num" aria-hidden="true">05</span>
+      <p class="foryou-text">You're ready to stop figuring it out alone. Not because you're weak — <em>because you're smart enough to know you don't have to.</em></p>
+    </li>
+  </ul>
+
+  <!-- NOT FOR YOU -->
+  <div class="notforyou-label reveal">This is not for you if</div>
+
+  <ul class="notforyou-list">
+    <li class="notforyou-item reveal">
+      <span class="notforyou-x" aria-hidden="true">✗</span>
+      <p class="notforyou-text">You want someone to tell you you're doing amazing. This isn't a cheerleading squad.</p>
+    </li>
+    <li class="notforyou-item reveal">
+      <span class="notforyou-x" aria-hidden="true">✗</span>
+      <p class="notforyou-text">You're looking for quick hacks and shortcuts. Fatherhood doesn't have a cheat code.</p>
+    </li>
+    <li class="notforyou-item reveal">
+      <span class="notforyou-x" aria-hidden="true">✗</span>
+      <p class="notforyou-text">You think showing up for your kids is optional. This room is for dads who already decided to do the work.</p>
+    </li>
+  </ul>
+</section>
+
+<!-- LEAD MAGNET / EMAIL CAPTURE -->
+<section class="leadmagnet-section" aria-label="Free download">
+  <div class="leadmagnet-inner">
+    <div class="section-label reveal" style="justify-content: center;">Free resource</div>
+
+    <h2 class="leadmagnet-headline reveal">Get the <span class="gold">Dad Origins Pack</span></h2>
+
+    <p class="leadmagnet-sub reveal">
+      Week 1 video scripts + The Self-Guided Dad Manifesto + 10 Commandments of Modern Fatherhood. One download. Zero fluff.
+    </p>
+
+    <div class="leadmagnet-features reveal">
+      <span class="leadmagnet-feat">Week 1 Scripts</span>
+      <span class="leadmagnet-feat">Manifesto PDF</span>
+      <span class="leadmagnet-feat">10 Commandments</span>
+    </div>
+
+    <!-- Replace action URL with your email service (Mailchimp, ConvertKit, etc.) -->
+    <form class="leadmagnet-form reveal" action="#" method="POST">
+      <input type="email" name="email" placeholder="Your email address" required aria-label="Email address">
+      <button type="submit">Send It →</button>
+    </form>
+
+    <p class="leadmagnet-trust reveal">No spam. No gentle parenting tips. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" aria-label="Frequently asked questions">
+  <div class="section-label reveal">Questions</div>
+
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Is Dads'42 free?
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-answer-inner">
+          The community on Skool is completely free to join. Inside, you'll find discussions, resources, and live calls. We also offer paid courses and guides for dads who want to go deeper — but the front door is always open.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Is this another Facebook group?
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-answer-inner">
+          No. Dads'42 runs on Skool — a purpose-built community platform with courses, discussions, and live events. No ads. No algorithm. No distractions. Just a room full of dads doing the work.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        I'm not religious or into stoicism. Is this for me?
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-answer-inner">
+          We reference Marcus Aurelius and evolutionary science — not because we're preaching a philosophy, but because fatherhood deserves an intellectual backbone. You don't need to be a stoic, a believer, or a reader. You just need to give a damn about being a better dad.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Who runs this?
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-answer-inner">
+          Oren Elimelech. Father of three boys. Engineer by trade. Not a therapist, not a coach, not an influencer. Just a dad who couldn't find the room he needed — so he built it. Read more in the "About" section above.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        What if I'm not a "bad" dad — I just want to be better?
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-answer-inner">
+          That's exactly who this is for. Dads'42 isn't for broken men looking for rescue. It's for men who already show up — and want to show up sharper, more grounded, and more intentional. The fact that you're asking the question means you belong here.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FINAL CTA -->
+<section class="cta-section" aria-label="Call to action">
+  <div class="cta-bg"></div>
+
+  <h2 class="cta-headline reveal">
+    Stop Scrolling.<br>
+    <span class="gold">Start Building.</span>
+  </h2>
+
+  <p class="cta-sub reveal">
+    The room exists. The dads are in it. The only question is whether you walk in.
+  </p>
+
+  <div class="cta-btn-wrap reveal">
+    <a href="https://www.skool.com/dads42-3659/about" class="btn-big" target="_blank" rel="noopener">
+      Join Dads'42 Free →
+    </a>
+    <span class="cta-micro">Free to join · No spam · Just dads doing the work</span>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">DADS'42</div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/oren.elimelech_dads42/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com/@Dads42" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://x.com/oren_dads42" target="_blank" rel="noopener">X</a>
+    <a href="https://www.facebook.com/oren.elimelech.Dads42" target="_blank" rel="noopener">Facebook</a>
+  </div>
+  <div class="footer-copy">© 2026 Dads'42 · Oren Elimelech</div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta" aria-label="Join community">
+  <a href="https://www.skool.com/dads42-3659/about" target="_blank" rel="noopener">
+    Join Dads'42 Free <span aria-hidden="true">→</span>
+  </a>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+  // Scroll-triggered reveal animations
+  (function() {
+    var reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      reveals.forEach(function(el) { el.classList.add('visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(function(el) { observer.observe(el); });
+  })();
+
+  // FAQ accordion
+  (function() {
+    var items = document.querySelectorAll('.faq-item');
+    items.forEach(function(item) {
+      var btn = item.querySelector('.faq-question');
+      btn.addEventListener('click', function() {
+        var isOpen = item.classList.contains('open');
+        items.forEach(function(i) {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
+
+  // Sticky mobile CTA — appears after scrolling past hero
+  (function() {
+    var sticky = document.querySelector('.sticky-cta');
+    if (!sticky) return;
+
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          sticky.classList.remove('visible');
+        } else {
+          sticky.classList.add('visible');
+        }
+      });
+    }, { threshold: 0 });
+
+    observer.observe(hero);
+  })();
+</script>
+
+</body>
+</html>
