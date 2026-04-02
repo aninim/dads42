@@ -14,14 +14,21 @@
 <meta name="twitter:title" content="Dads'42 — Nobody Handed You the Manual.">
 <meta name="twitter:description" content="A private community for dads who figured out life themselves — and refuse to wing fatherhood.">
 <meta name="twitter:image" content="https://dads42.com/og-image.jpg">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T23FFX3Q');</script>
 <link rel="canonical" href="https://dads42.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --black: #0A0A0A;
     --dark: #111111;
+    --warm-dark: #161210;
     --card: #161616;
     --border: #222222;
     --gold: #C9A84C;
@@ -30,6 +37,7 @@
     --white: #F2EDE4;
     --muted: #6B6560;
     --red: #B03A2E;
+    --accent-zone: #0D1117;
   }
 
   html { scroll-behavior: smooth; }
@@ -37,7 +45,7 @@
   body {
     background: var(--black);
     color: var(--white);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Manrope', sans-serif;
     overflow-x: hidden;
     cursor: default;
   }
@@ -55,7 +63,7 @@
 
   /* ─── ANIMATIONS ─── */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(40px); }
     to   { opacity: 1; transform: translateY(0); }
   }
   @keyframes lineGrow {
@@ -70,6 +78,10 @@
     0%, 100% { transform: translateY(0px); }
     50%       { transform: translateY(-8px); }
   }
+  @keyframes marqueeScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 
   .fade-up {
     opacity: 0;
@@ -81,16 +93,40 @@
   .delay-4 { animation-delay: 0.55s; }
   .delay-5 { animation-delay: 0.7s; }
 
-  /* ─── SCROLL REVEAL ─── */
+  /* ─── SCROLL REVEAL VARIANTS ─── */
   .reveal {
     opacity: 0;
-    transform: translateY(30px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* Default: fade up */
+  .reveal--up { transform: translateY(40px); }
+  /* Slide from left */
+  .reveal--left { transform: translateX(-60px); }
+  /* Slide from right */
+  .reveal--right { transform: translateX(60px); }
+  /* Scale up */
+  .reveal--scale { transform: scale(0.85); }
+  /* Clip reveal (bottom to top) */
+  .reveal--clip {
+    clip-path: inset(100% 0 0 0);
+    transform: none;
   }
+  .reveal--clip.visible {
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease;
+  }
+  /* Fade only (no movement) */
+  .reveal--fade { transform: none; }
+
+  /* Stagger children */
+  .stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+  .stagger > .reveal:nth-child(2) { transition-delay: 0.08s; }
+  .stagger > .reveal:nth-child(3) { transition-delay: 0.16s; }
+  .stagger > .reveal:nth-child(4) { transition-delay: 0.24s; }
+  .stagger > .reveal:nth-child(5) { transition-delay: 0.32s; }
+  .stagger > .reveal:nth-child(6) { transition-delay: 0.40s; }
 
   /* ─── REDUCED MOTION ─── */
   @media (prefers-reduced-motion: reduce) {
@@ -99,8 +135,9 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-    .reveal { opacity: 1; transform: none; }
+    .reveal { opacity: 1; transform: none; clip-path: none; }
     .fade-up { opacity: 1; transform: none; }
+    .marquee-track { animation: none !important; }
   }
 
   /* ─── NAV ─── */
@@ -128,17 +165,18 @@
     color: var(--gold);
     padding: 10px 24px;
     border-radius: 2px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   .nav-cta:hover {
     background: var(--gold);
     color: var(--black);
+    letter-spacing: 4px;
   }
 
   /* ─── HERO ─── */
@@ -162,10 +200,10 @@
 
   .hero-number {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(180px, 30vw, 360px);
+    font-size: clamp(200px, 35vw, 420px);
     line-height: 0.85;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(201,168,76,0.12);
+    -webkit-text-stroke: 1px rgba(201,168,76,0.1);
     position: absolute;
     right: -20px;
     top: 50%;
@@ -183,6 +221,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    font-weight: 600;
   }
 
   .hero-eyebrow::before {
@@ -196,10 +235,10 @@
 
   .hero-headline {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(52px, 9vw, 110px);
-    line-height: 0.95;
+    font-size: clamp(60px, 10vw, 130px);
+    line-height: 0.92;
     letter-spacing: 2px;
-    max-width: 800px;
+    max-width: 850px;
     position: relative;
     z-index: 2;
   }
@@ -225,12 +264,12 @@
 
   .hero-sub {
     font-family: 'Lora', serif;
-    font-size: clamp(17px, 2vw, 20px);
+    font-size: clamp(17px, 2vw, 21px);
     font-style: italic;
     line-height: 1.7;
-    color: rgba(242,237,228,0.6);
+    color: rgba(242,237,228,0.55);
     max-width: 520px;
-    margin: 32px 0 52px;
+    margin: 36px 0 56px;
     position: relative;
     z-index: 2;
   }
@@ -252,33 +291,34 @@
     color: var(--black);
     text-decoration: none;
     padding: 18px 40px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
     border-radius: 2px;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: pulse 3s ease infinite;
   }
   .btn-primary:hover {
     background: #E0BD6A;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(201,168,76,0.3);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(201,168,76,0.35);
+    letter-spacing: 3px;
   }
 
   .btn-primary .arrow {
     font-size: 18px;
-    transition: transform 0.2s;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  .btn-primary:hover .arrow { transform: translateX(4px); }
+  .btn-primary:hover .arrow { transform: translateX(6px); }
 
   .hero-proof {
     font-size: 13px;
     color: var(--muted);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Manrope', sans-serif;
   }
-  .hero-proof strong { color: var(--white); }
+  .hero-proof strong { color: var(--white); font-weight: 600; }
 
   /* ─── DIVIDER ─── */
   .divider {
@@ -297,6 +337,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    font-weight: 700;
   }
   .section-label::after {
     content: '';
@@ -306,7 +347,43 @@
     max-width: 80px;
   }
 
-  /* ─── PAIN SECTION ─── */
+  /* ─── MARQUEE ─── */
+  .marquee-section {
+    padding: 32px 0;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--warm-dark);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: marqueeScroll 25s linear infinite;
+  }
+
+  .marquee-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 90px);
+    letter-spacing: 4px;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,168,76,0.25);
+    white-space: nowrap;
+    padding: 0 24px;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .marquee-item .dot {
+    color: var(--gold);
+    -webkit-text-stroke: 0;
+    opacity: 0.5;
+    font-size: 0.5em;
+    vertical-align: middle;
+  }
+
+  /* ─── PAIN SECTION — color zone: warm dark ─── */
   .pain-section {
     padding: 100px 48px;
     max-width: 1100px;
@@ -323,11 +400,12 @@
     padding: 32px 36px;
     background: var(--card);
     border: 1px solid var(--border);
-    transition: border-color 0.2s, background 0.2s;
+    transition: border-color 0.3s, background 0.3s, transform 0.3s;
   }
   .pain-item:hover {
     border-color: var(--gold-line);
     background: #1A1A1A;
+    transform: translateY(-2px);
   }
 
   .pain-check {
@@ -338,6 +416,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    font-weight: 600;
   }
   .pain-check::before {
     content: '✗';
@@ -356,14 +435,22 @@
     font-style: normal;
   }
 
-  /* ─── IDENTITY SECTION ─── */
+  /* ─── IDENTITY SECTION — color zone: accent (deep blue-black) ─── */
   .identity-section {
-    padding: 100px 48px;
-    background: var(--dark);
+    padding: 120px 48px;
+    background: var(--accent-zone);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     position: relative;
     overflow: hidden;
+  }
+
+  .identity-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .identity-inner {
@@ -377,8 +464,8 @@
 
   .identity-headline {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(44px, 6vw, 80px);
-    line-height: 0.95;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.92;
     letter-spacing: 1px;
   }
 
@@ -404,10 +491,23 @@
 
   .quote-block {
     border-left: 3px solid var(--gold);
-    padding: 20px 28px;
+    padding: 24px 32px;
     background: var(--gold-dim);
     border-radius: 0 4px 4px 0;
     margin: 8px 0;
+    position: relative;
+  }
+
+  .quote-block::before {
+    content: '"';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    line-height: 1;
   }
 
   .quote-block p {
@@ -416,38 +516,41 @@
     font-style: italic;
     line-height: 1.6;
     color: var(--white);
+    position: relative;
   }
 
-  /* ─── WHY 42 ─── */
+  /* ─── WHY 42 — asymmetric layout ─── */
   .why-section {
     padding: 100px 48px;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 280px 1fr;
     gap: 80px;
     align-items: start;
   }
 
   .big-42 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 200px;
+    font-size: 220px;
     line-height: 1;
     color: transparent;
     -webkit-text-stroke: 2px var(--gold);
-    opacity: 0.6;
+    opacity: 0.5;
     animation: float 6s ease-in-out infinite;
     flex-shrink: 0;
+    position: sticky;
+    top: 120px;
   }
 
   .why-content { padding-top: 20px; }
 
   .why-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 4vw, 56px);
+    font-size: clamp(36px, 4vw, 60px);
     letter-spacing: 1px;
     margin-bottom: 24px;
-    line-height: 1.1;
+    line-height: 1.05;
   }
 
   .why-title .gold { color: var(--gold); }
@@ -462,10 +565,10 @@
 
   .why-body strong { color: var(--white); }
 
-  /* ─── WHAT'S INSIDE ─── */
+  /* ─── WHAT'S INSIDE — color zone: warm dark ─── */
   .inside-section {
     padding: 100px 48px;
-    background: var(--dark);
+    background: var(--warm-dark);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
@@ -481,9 +584,9 @@
 
   .inside-card {
     padding: 40px 32px;
-    background: var(--card);
+    background: rgba(22,22,22,0.8);
     border: 1px solid var(--border);
-    transition: all 0.25s;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
   }
@@ -495,17 +598,27 @@
     height: 2px;
     background: var(--gold);
     transform: scaleX(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform-origin: left;
   }
 
   .inside-card:hover::before { transform: scaleX(1); }
-  .inside-card:hover { border-color: var(--gold-line); background: #1A1A1A; }
+  .inside-card:hover {
+    border-color: var(--gold-line);
+    background: rgba(26,26,26,0.9);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
 
   .card-icon {
     font-size: 28px;
     margin-bottom: 20px;
     display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .inside-card:hover .card-icon {
+    transform: scale(1.15) rotate(-5deg);
   }
 
   .card-title {
@@ -522,7 +635,7 @@
     color: var(--muted);
   }
 
-  /* ─── ABOUT THE CREATOR ─── */
+  /* ─── ABOUT THE CREATOR — right-aligned layout ─── */
   .creator-section {
     padding: 100px 48px;
     max-width: 1100px;
@@ -531,14 +644,19 @@
 
   .creator-inner {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 1fr 240px;
     gap: 60px;
     align-items: start;
+    direction: rtl;
+  }
+
+  .creator-inner > * {
+    direction: ltr;
   }
 
   .creator-photo {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 280px;
     border-radius: 4px;
     background: var(--card);
     border: 1px solid var(--border);
@@ -546,14 +664,16 @@
     align-items: center;
     justify-content: center;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 72px;
+    font-size: 80px;
     color: var(--gold);
     opacity: 0.3;
+    position: sticky;
+    top: 120px;
   }
 
   .creator-name {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 4vw, 52px);
+    font-size: clamp(40px, 5vw, 60px);
     letter-spacing: 1px;
     margin-bottom: 8px;
     line-height: 1;
@@ -567,6 +687,7 @@
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 24px;
+    font-weight: 600;
   }
 
   .creator-bio {
@@ -584,8 +705,8 @@
 
   .creator-credentials {
     display: flex;
-    gap: 32px;
-    margin-top: 28px;
+    gap: 40px;
+    margin-top: 32px;
     flex-wrap: wrap;
   }
 
@@ -597,7 +718,7 @@
 
   .credential-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
+    font-size: 40px;
     color: var(--gold);
     line-height: 1;
   }
@@ -607,11 +728,18 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--muted);
+    font-weight: 600;
   }
 
-  /* ─── FOR YOU IF ─── */
+  /* ─── FOR YOU IF — color zone: accent ─── */
   .foryou-section {
     padding: 100px 48px;
+    background: var(--accent-zone);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .foryou-inner {
     max-width: 900px;
     margin: 0 auto;
   }
@@ -629,11 +757,15 @@
     align-items: flex-start;
     gap: 20px;
     padding: 24px 28px;
-    background: var(--card);
+    background: rgba(22,22,22,0.6);
     border: 1px solid var(--border);
-    transition: border-color 0.2s;
+    transition: border-color 0.3s, transform 0.3s, background 0.3s;
   }
-  .foryou-item:hover { border-color: var(--gold-line); }
+  .foryou-item:hover {
+    border-color: var(--gold-line);
+    transform: translateX(8px);
+    background: rgba(22,22,22,0.8);
+  }
 
   .foryou-num {
     font-family: 'Bebas Neue', sans-serif;
@@ -668,6 +800,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    font-weight: 700;
   }
   .notforyou-label::after {
     content: '';
@@ -689,8 +822,12 @@
     align-items: flex-start;
     gap: 20px;
     padding: 20px 28px;
-    background: var(--card);
+    background: rgba(22,22,22,0.4);
     border: 1px solid rgba(176,58,46,0.15);
+    transition: border-color 0.3s;
+  }
+  .notforyou-item:hover {
+    border-color: rgba(176,58,46,0.4);
   }
 
   .notforyou-x {
@@ -709,23 +846,34 @@
     color: var(--muted);
   }
 
-  /* ─── LEAD MAGNET / EMAIL CAPTURE ─── */
+  /* ─── LEAD MAGNET / EMAIL CAPTURE — color zone: warm dark ─── */
   .leadmagnet-section {
     padding: 100px 48px;
-    background: var(--dark);
+    background: var(--warm-dark);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .leadmagnet-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(201,168,76,0.03) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .leadmagnet-inner {
     max-width: 680px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
   }
 
   .leadmagnet-headline {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 5vw, 56px);
+    font-size: clamp(40px, 6vw, 64px);
     line-height: 1;
     letter-spacing: 1px;
     margin-bottom: 16px;
@@ -756,6 +904,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    font-weight: 500;
   }
 
   .leadmagnet-feat::before {
@@ -774,15 +923,15 @@
   .leadmagnet-form input[type="email"] {
     flex: 1;
     padding: 16px 20px;
-    background: var(--card);
+    background: rgba(22,22,22,0.8);
     border: 1px solid var(--border);
     border-right: none;
     border-radius: 2px 0 0 2px;
     color: var(--white);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 14px;
     outline: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.3s;
   }
 
   .leadmagnet-form input[type="email"]::placeholder {
@@ -799,18 +948,19 @@
     color: var(--black);
     border: none;
     border-radius: 0 2px 2px 0;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     white-space: nowrap;
   }
 
   .leadmagnet-form button:hover {
     background: #E0BD6A;
+    letter-spacing: 3px;
   }
 
   .leadmagnet-trust {
@@ -838,6 +988,11 @@
     background: var(--card);
     border: 1px solid var(--border);
     overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .faq-item:hover {
+    border-color: var(--gold-line);
   }
 
   .faq-question {
@@ -846,9 +1001,9 @@
     background: none;
     border: none;
     color: var(--white);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: left;
     cursor: pointer;
     display: flex;
@@ -868,7 +1023,7 @@
   .faq-toggle {
     font-size: 20px;
     color: var(--gold);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     flex-shrink: 0;
   }
 
@@ -896,10 +1051,12 @@
 
   /* ─── FINAL CTA ─── */
   .cta-section {
-    padding: 120px 48px;
+    padding: 140px 48px;
     text-align: center;
     position: relative;
     overflow: hidden;
+    background: var(--warm-dark);
+    border-top: 1px solid var(--border);
   }
 
   .cta-bg {
@@ -910,13 +1067,13 @@
 
   .cta-headline {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(48px, 8vw, 100px);
-    line-height: 0.95;
+    font-size: clamp(52px, 9vw, 120px);
+    line-height: 0.92;
     letter-spacing: 2px;
     position: relative;
     z-index: 2;
     max-width: 800px;
-    margin: 0 auto 32px;
+    margin: 0 auto 36px;
   }
 
   .cta-headline .gold { color: var(--gold); }
@@ -950,20 +1107,21 @@
     color: var(--black);
     text-decoration: none;
     padding: 22px 56px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
     letter-spacing: 3px;
     text-transform: uppercase;
     border-radius: 2px;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: pulse 3s ease infinite;
   }
 
   .btn-big:hover {
     background: #E0BD6A;
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.02);
     box-shadow: 0 20px 60px rgba(201,168,76,0.35);
+    letter-spacing: 5px;
   }
 
   .cta-micro {
@@ -1001,9 +1159,13 @@
     color: var(--muted);
     text-decoration: none;
     letter-spacing: 1px;
-    transition: color 0.2s;
+    font-weight: 500;
+    transition: color 0.3s, letter-spacing 0.3s;
   }
-  .footer-links a:hover { color: var(--gold); }
+  .footer-links a:hover {
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
 
   .footer-copy {
     font-size: 11px;
@@ -1019,14 +1181,14 @@
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
     .hero { padding: 100px 24px 60px; }
-    .hero-number { font-size: 200px; opacity: 0.08; }
+    .hero-number { font-size: 200px; opacity: 0.06; }
     .pain-grid { grid-template-columns: 1fr; }
     .identity-inner { grid-template-columns: 1fr; gap: 40px; }
     .why-section { grid-template-columns: 1fr; gap: 0; }
     .big-42 { font-size: 100px; display: none; }
     .inside-grid { grid-template-columns: 1fr; }
-    .creator-inner { grid-template-columns: 1fr; }
-    .creator-photo { width: 120px; height: 120px; font-size: 48px; }
+    .creator-inner { grid-template-columns: 1fr; direction: ltr; }
+    .creator-photo { width: 120px; height: 140px; font-size: 48px; position: static; }
     .creator-credentials { gap: 24px; }
     .leadmagnet-form { flex-direction: column; }
     .leadmagnet-form input[type="email"] { border-right: 1px solid var(--border); border-radius: 2px; }
@@ -1034,7 +1196,9 @@
     .leadmagnet-features { flex-direction: column; align-items: center; gap: 12px; }
     .pain-section, .inside-section, .foryou-section, .cta-section, .why-section, .faq-section, .creator-section { padding: 60px 24px; }
     .identity-section, .leadmagnet-section { padding: 60px 24px; }
-    footer { padding: 32px 24px; flex-direction: column; gap: 20px; text-align: center; }
+    .foryou-item:hover { transform: translateX(4px); }
+    .marquee-item { font-size: clamp(36px, 10vw, 60px); }
+    footer { padding: 32px 24px 80px; flex-direction: column; gap: 20px; text-align: center; }
 
     .sticky-cta {
       display: flex;
@@ -1068,15 +1232,13 @@
       background: var(--gold);
       color: var(--black);
       text-decoration: none;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Manrope', sans-serif;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
       border-radius: 2px;
     }
-
-    footer { padding-bottom: 80px; }
   }
 
   /* ─── FOCUS INDICATORS ─── */
@@ -1105,6 +1267,9 @@
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T23FFX3Q"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- SKIP LINK -->
 <a href="#main" class="skip-link">Skip to content</a>
@@ -1142,26 +1307,40 @@
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- MARQUEE — brand pillars -->
+<section class="marquee-section" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Science <span class="dot">·</span></span>
+    <span class="marquee-item">Philosophy <span class="dot">·</span></span>
+    <span class="marquee-item">Psychology <span class="dot">·</span></span>
+    <span class="marquee-item">Practice <span class="dot">·</span></span>
+    <span class="marquee-item">Origin <span class="dot">·</span></span>
+    <span class="marquee-item">Science <span class="dot">·</span></span>
+    <span class="marquee-item">Philosophy <span class="dot">·</span></span>
+    <span class="marquee-item">Psychology <span class="dot">·</span></span>
+    <span class="marquee-item">Practice <span class="dot">·</span></span>
+    <span class="marquee-item">Origin <span class="dot">·</span></span>
+  </div>
+</section>
 
 <!-- PAIN SECTION -->
 <section class="pain-section" aria-label="Common struggles">
-  <div class="section-label reveal">Sound familiar</div>
+  <div class="section-label reveal reveal--fade">Sound familiar</div>
 
-  <div class="pain-grid">
-    <div class="pain-item reveal">
+  <div class="pain-grid stagger">
+    <div class="pain-item reveal reveal--left">
       <div class="pain-check">Still here?</div>
       <p class="pain-text">You love your kids more than anything. But some nights you wonder if you're actually <em>doing it right.</em></p>
     </div>
-    <div class="pain-item reveal">
+    <div class="pain-item reveal reveal--right">
       <div class="pain-check">Still here?</div>
       <p class="pain-text">Your own dad wasn't exactly a <em>role model.</em> So you're building the plane while flying it.</p>
     </div>
-    <div class="pain-item reveal">
+    <div class="pain-item reveal reveal--left">
       <div class="pain-check">Still here?</div>
       <p class="pain-text">Every parenting account feels like it's talking to <em>someone else.</em> Too soft. Too clinical. Too much.</p>
     </div>
-    <div class="pain-item reveal">
+    <div class="pain-item reveal reveal--right">
       <div class="pain-check">Still here?</div>
       <p class="pain-text">You don't need therapy. You need a <em>real conversation</em> with a dad who's been in the same trench.</p>
     </div>
@@ -1170,10 +1349,10 @@
 
 <div class="divider"></div>
 
-<!-- IDENTITY SECTION -->
+<!-- IDENTITY SECTION — accent color zone -->
 <section class="identity-section" aria-label="Identity">
   <div class="identity-inner">
-    <h2 class="identity-headline reveal">
+    <h2 class="identity-headline reveal reveal--scale">
       You're Not<br>
       <span class="gold">Lost.</span><br>
       You're<br>
@@ -1181,34 +1360,34 @@
     </h2>
 
     <div class="identity-body">
-      <p class="identity-para reveal">
+      <p class="identity-para reveal reveal--right">
         There's a difference between a dad who <strong>gave up</strong> and a dad who never had a map to begin with. You showed up anyway. You figured things out. You're still here, still asking questions.
       </p>
 
-      <div class="quote-block reveal">
+      <div class="quote-block reveal reveal--clip">
         <p>"42 is the answer to life, the universe, and everything. The problem is nobody knew the question. Fatherhood is exactly like that."</p>
       </div>
 
-      <p class="identity-para reveal">
+      <p class="identity-para reveal reveal--right">
         Dads'42 isn't about becoming a <strong>gentler, softer, more emotionally available version</strong> of yourself. It's about becoming a <strong>more capable, more grounded, more intentional father</strong> — on your own terms.
       </p>
     </div>
   </div>
 </section>
 
-<!-- WHY 42 -->
+<!-- WHY 42 — asymmetric layout -->
 <section class="why-section" aria-label="Why 42">
-  <div class="big-42" aria-hidden="true">42</div>
+  <div class="big-42 reveal reveal--scale" aria-hidden="true">42</div>
   <div class="why-content">
-    <div class="section-label reveal">The name</div>
-    <h2 class="why-title reveal">The <span class="gold">Answer</span> You're<br>Looking For</h2>
-    <p class="why-body reveal">
+    <div class="section-label reveal reveal--fade">The name</div>
+    <h2 class="why-title reveal reveal--left">The <span class="gold">Answer</span> You're<br>Looking For</h2>
+    <p class="why-body reveal reveal--up">
       In <em>The Hitchhiker's Guide to the Galaxy</em>, a supercomputer spends 7.5 million years calculating <strong>the answer to life, the universe, and everything.</strong> The answer is 42.
     </p>
-    <p class="why-body reveal">
+    <p class="why-body reveal reveal--up">
       The catch? <strong>Nobody knew what the question was.</strong>
     </p>
-    <p class="why-body reveal">
+    <p class="why-body reveal reveal--up">
       That's fatherhood. You get this enormous responsibility — raising a human being — and the question keeps changing. What kind of dad do I want to be? Am I enough? What did I miss? Dads'42 is the community where we figure out the questions together.
     </p>
   </div>
@@ -1216,38 +1395,38 @@
 
 <div class="divider"></div>
 
-<!-- WHAT'S INSIDE -->
+<!-- WHAT'S INSIDE — warm dark color zone -->
 <section class="inside-section" aria-label="What's inside the community">
   <div class="inside-inner">
-    <div class="section-label reveal">Inside the community</div>
+    <div class="section-label reveal reveal--fade">Inside the community</div>
 
-    <div class="inside-grid">
-      <div class="inside-card reveal">
+    <div class="inside-grid stagger">
+      <div class="inside-card reveal reveal--up">
         <span class="card-icon" aria-hidden="true">🔥</span>
         <div class="card-title">Real Conversations</div>
         <p class="card-desc">No performance. No perfect dads. Just honest discussion from men who are actively in it — not coaches selling you a fantasy.</p>
       </div>
-      <div class="inside-card reveal">
+      <div class="inside-card reveal reveal--up">
         <span class="card-icon" aria-hidden="true">🛠️</span>
         <div class="card-title">Practical Guides</div>
         <p class="card-desc">Short, tactical resources on the real stuff — discipline, presence, identity, mental load, raising boys, co-parenting. No fluff.</p>
       </div>
-      <div class="inside-card reveal">
+      <div class="inside-card reveal reveal--up">
         <span class="card-icon" aria-hidden="true">📞</span>
         <div class="card-title">Live Calls</div>
         <p class="card-desc">Weekly conversations with the community and guests. Ask the thing you can't Google. Say the thing you can't say anywhere else.</p>
       </div>
-      <div class="inside-card reveal">
+      <div class="inside-card reveal reveal--up">
         <span class="card-icon" aria-hidden="true">🤝</span>
         <div class="card-title">A Tribe</div>
         <p class="card-desc">The dads in this room are your people. Not an audience. Not followers. Men who are building the same thing, side by side.</p>
       </div>
-      <div class="inside-card reveal">
+      <div class="inside-card reveal reveal--up">
         <span class="card-icon" aria-hidden="true">📚</span>
         <div class="card-title">Knowledge Vault</div>
         <p class="card-desc">Curated content, frameworks, and resources — organized so you can actually find what you need, when you need it.</p>
       </div>
-      <div class="inside-card reveal">
+      <div class="inside-card reveal reveal--up">
         <span class="card-icon" aria-hidden="true">🎯</span>
         <div class="card-title">1-on-1 Access</div>
         <p class="card-desc">Book a direct call with Oren. Not a funnel. Not a form. A real conversation to work through your specific situation.</p>
@@ -1256,44 +1435,44 @@
   </div>
 </section>
 
-<!-- ABOUT THE CREATOR -->
+<!-- ABOUT THE CREATOR — reversed layout (text left, photo right) -->
 <section class="creator-section" aria-label="About the creator">
-  <div class="section-label reveal">The dad behind this</div>
+  <div class="section-label reveal reveal--fade">The dad behind this</div>
 
   <div class="creator-inner">
-    <div class="creator-photo" aria-label="Oren Elimelech photo placeholder">O</div>
+    <div class="creator-photo reveal reveal--scale" aria-label="Oren Elimelech photo placeholder">O</div>
 
     <div>
-      <h2 class="creator-name reveal">Oren <span class="gold">Elimelech</span></h2>
-      <div class="creator-title reveal">Father · Engineer · Builder</div>
+      <h2 class="creator-name reveal reveal--left">Oren <span class="gold">Elimelech</span></h2>
+      <div class="creator-title reveal reveal--left">Father · Engineer · Builder</div>
 
-      <p class="creator-bio reveal">
+      <p class="creator-bio reveal reveal--up">
         Three boys under one roof. No manual. No role model to copy from. Just a decision: <strong>figure it out or repeat the cycle.</strong>
       </p>
 
-      <p class="creator-bio reveal">
+      <p class="creator-bio reveal reveal--up">
         By day, I lead a data and validation team in computer vision. I hold two patents. I've spent my career solving complex systems — hardware, software, product. But nothing I've ever engineered is as hard as <strong>being the father I never had.</strong>
       </p>
 
-      <p class="creator-bio reveal">
+      <p class="creator-bio reveal reveal--up">
         Dads'42 isn't a brand I built. It's the room I needed and couldn't find. So I built it. Grounded in <strong>Anna Machin's evolutionary science</strong>, <strong>Marcus Aurelius's accountability</strong>, and <strong>Alfred Adler's psychology</strong> — because fatherhood deserves more than vibes and hashtags.
       </p>
 
-      <div class="creator-credentials reveal">
+      <div class="creator-credentials reveal reveal--up">
         <div class="credential">
-          <div class="credential-num">3</div>
+          <div class="credential-num" data-target="3">0</div>
           <div class="credential-label">Sons</div>
         </div>
         <div class="credential">
-          <div class="credential-num">2</div>
+          <div class="credential-num" data-target="2">0</div>
           <div class="credential-label">Patents</div>
         </div>
         <div class="credential">
-          <div class="credential-num">5</div>
+          <div class="credential-num" data-target="5">0</div>
           <div class="credential-label">Pillars</div>
         </div>
         <div class="credential">
-          <div class="credential-num">25</div>
+          <div class="credential-num" data-target="25">0</div>
           <div class="credential-label">Video Scripts</div>
         </div>
       </div>
@@ -1303,85 +1482,87 @@
 
 <div class="divider"></div>
 
-<!-- FOR YOU IF -->
+<!-- FOR YOU IF — accent color zone -->
 <section class="foryou-section" aria-label="Who this is for">
-  <div class="section-label reveal">This is for you if</div>
+  <div class="foryou-inner">
+    <div class="section-label reveal reveal--fade">This is for you if</div>
 
-  <ul class="foryou-list">
-    <li class="foryou-item reveal">
-      <span class="foryou-num" aria-hidden="true">01</span>
-      <p class="foryou-text">You became a father without a strong male role model. <em>You're building from scratch and you know it.</em></p>
-    </li>
-    <li class="foryou-item reveal">
-      <span class="foryou-num" aria-hidden="true">02</span>
-      <p class="foryou-text">You're done with parenting content that feels like it was written for someone else. <em>You need real, not curated.</em></p>
-    </li>
-    <li class="foryou-item reveal">
-      <span class="foryou-num" aria-hidden="true">03</span>
-      <p class="foryou-text">You want to be a better dad than you had — but on your own terms, not someone else's Instagram version of fatherhood.</p>
-    </li>
-    <li class="foryou-item reveal">
-      <span class="foryou-num" aria-hidden="true">04</span>
-      <p class="foryou-text">You feel the loneliness that nobody talks about. <em>The late nights. The invisible weight. The questions with no answers.</em></p>
-    </li>
-    <li class="foryou-item reveal">
-      <span class="foryou-num" aria-hidden="true">05</span>
-      <p class="foryou-text">You're ready to stop figuring it out alone. Not because you're weak — <em>because you're smart enough to know you don't have to.</em></p>
-    </li>
-  </ul>
+    <ul class="foryou-list stagger">
+      <li class="foryou-item reveal reveal--left">
+        <span class="foryou-num" aria-hidden="true">01</span>
+        <p class="foryou-text">You became a father without a strong male role model. <em>You're building from scratch and you know it.</em></p>
+      </li>
+      <li class="foryou-item reveal reveal--left">
+        <span class="foryou-num" aria-hidden="true">02</span>
+        <p class="foryou-text">You're done with parenting content that feels like it was written for someone else. <em>You need real, not curated.</em></p>
+      </li>
+      <li class="foryou-item reveal reveal--left">
+        <span class="foryou-num" aria-hidden="true">03</span>
+        <p class="foryou-text">You want to be a better dad than you had — but on your own terms, not someone else's Instagram version of fatherhood.</p>
+      </li>
+      <li class="foryou-item reveal reveal--left">
+        <span class="foryou-num" aria-hidden="true">04</span>
+        <p class="foryou-text">You feel the loneliness that nobody talks about. <em>The late nights. The invisible weight. The questions with no answers.</em></p>
+      </li>
+      <li class="foryou-item reveal reveal--left">
+        <span class="foryou-num" aria-hidden="true">05</span>
+        <p class="foryou-text">You're ready to stop figuring it out alone. Not because you're weak — <em>because you're smart enough to know you don't have to.</em></p>
+      </li>
+    </ul>
 
-  <!-- NOT FOR YOU -->
-  <div class="notforyou-label reveal">This is not for you if</div>
+    <!-- NOT FOR YOU -->
+    <div class="notforyou-label reveal reveal--fade">This is not for you if</div>
 
-  <ul class="notforyou-list">
-    <li class="notforyou-item reveal">
-      <span class="notforyou-x" aria-hidden="true">✗</span>
-      <p class="notforyou-text">You want someone to tell you you're doing amazing. This isn't a cheerleading squad.</p>
-    </li>
-    <li class="notforyou-item reveal">
-      <span class="notforyou-x" aria-hidden="true">✗</span>
-      <p class="notforyou-text">You're looking for quick hacks and shortcuts. Fatherhood doesn't have a cheat code.</p>
-    </li>
-    <li class="notforyou-item reveal">
-      <span class="notforyou-x" aria-hidden="true">✗</span>
-      <p class="notforyou-text">You think showing up for your kids is optional. This room is for dads who already decided to do the work.</p>
-    </li>
-  </ul>
+    <ul class="notforyou-list">
+      <li class="notforyou-item reveal reveal--right">
+        <span class="notforyou-x" aria-hidden="true">✗</span>
+        <p class="notforyou-text">You want someone to tell you you're doing amazing. This isn't a cheerleading squad.</p>
+      </li>
+      <li class="notforyou-item reveal reveal--right">
+        <span class="notforyou-x" aria-hidden="true">✗</span>
+        <p class="notforyou-text">You're looking for quick hacks and shortcuts. Fatherhood doesn't have a cheat code.</p>
+      </li>
+      <li class="notforyou-item reveal reveal--right">
+        <span class="notforyou-x" aria-hidden="true">✗</span>
+        <p class="notforyou-text">You think showing up for your kids is optional. This room is for dads who already decided to do the work.</p>
+      </li>
+    </ul>
+  </div>
 </section>
 
-<!-- LEAD MAGNET / EMAIL CAPTURE -->
+<!-- LEAD MAGNET / EMAIL CAPTURE — warm dark color zone -->
 <section class="leadmagnet-section" aria-label="Free download">
   <div class="leadmagnet-inner">
-    <div class="section-label reveal" style="justify-content: center;">Free resource</div>
+    <div class="section-label reveal reveal--fade" style="justify-content: center;">Free resource</div>
 
-    <h2 class="leadmagnet-headline reveal">Get the <span class="gold">Dad Origins Pack</span></h2>
+    <h2 class="leadmagnet-headline reveal reveal--scale">Get the <span class="gold">Dad Origins Pack</span></h2>
 
-    <p class="leadmagnet-sub reveal">
+    <p class="leadmagnet-sub reveal reveal--up">
       Week 1 video scripts + The Self-Guided Dad Manifesto + 10 Commandments of Modern Fatherhood. One download. Zero fluff.
     </p>
 
-    <div class="leadmagnet-features reveal">
+    <div class="leadmagnet-features reveal reveal--up">
       <span class="leadmagnet-feat">Week 1 Scripts</span>
       <span class="leadmagnet-feat">Manifesto PDF</span>
       <span class="leadmagnet-feat">10 Commandments</span>
     </div>
 
     <!-- Replace action URL with your email service (Mailchimp, ConvertKit, etc.) -->
-    <form class="leadmagnet-form reveal" action="#" method="POST">
+    <form class="leadmagnet-form reveal reveal--up" action="#" method="POST">
       <input type="email" name="email" placeholder="Your email address" required aria-label="Email address">
       <button type="submit">Send It →</button>
     </form>
 
-    <p class="leadmagnet-trust reveal">No spam. No gentle parenting tips. Unsubscribe anytime.</p>
+    <p class="leadmagnet-trust reveal reveal--fade">No spam. No gentle parenting tips. Unsubscribe anytime.</p>
   </div>
 </section>
 
 <!-- FAQ -->
 <section class="faq-section" aria-label="Frequently asked questions">
-  <div class="section-label reveal">Questions</div>
+  <div class="section-label reveal reveal--fade">Questions</div>
 
-  <div class="faq-list">
-    <div class="faq-item reveal">
+  <div class="faq-list stagger">
+    <div class="faq-item reveal reveal--up">
       <button class="faq-question" aria-expanded="false">
         Is Dads'42 free?
         <span class="faq-toggle" aria-hidden="true">+</span>
@@ -1393,7 +1574,7 @@
       </div>
     </div>
 
-    <div class="faq-item reveal">
+    <div class="faq-item reveal reveal--up">
       <button class="faq-question" aria-expanded="false">
         Is this another Facebook group?
         <span class="faq-toggle" aria-hidden="true">+</span>
@@ -1405,7 +1586,7 @@
       </div>
     </div>
 
-    <div class="faq-item reveal">
+    <div class="faq-item reveal reveal--up">
       <button class="faq-question" aria-expanded="false">
         I'm not religious or into stoicism. Is this for me?
         <span class="faq-toggle" aria-hidden="true">+</span>
@@ -1417,7 +1598,7 @@
       </div>
     </div>
 
-    <div class="faq-item reveal">
+    <div class="faq-item reveal reveal--up">
       <button class="faq-question" aria-expanded="false">
         Who runs this?
         <span class="faq-toggle" aria-hidden="true">+</span>
@@ -1429,7 +1610,7 @@
       </div>
     </div>
 
-    <div class="faq-item reveal">
+    <div class="faq-item reveal reveal--up">
       <button class="faq-question" aria-expanded="false">
         What if I'm not a "bad" dad — I just want to be better?
         <span class="faq-toggle" aria-hidden="true">+</span>
@@ -1445,20 +1626,20 @@
 
 <div class="divider"></div>
 
-<!-- FINAL CTA -->
+<!-- FINAL CTA — warm dark color zone -->
 <section class="cta-section" aria-label="Call to action">
   <div class="cta-bg"></div>
 
-  <h2 class="cta-headline reveal">
+  <h2 class="cta-headline reveal reveal--scale">
     Stop Scrolling.<br>
     <span class="gold">Start Building.</span>
   </h2>
 
-  <p class="cta-sub reveal">
+  <p class="cta-sub reveal reveal--up">
     The room exists. The dads are in it. The only question is whether you walk in.
   </p>
 
-  <div class="cta-btn-wrap reveal">
+  <div class="cta-btn-wrap reveal reveal--up">
     <a href="https://www.skool.com/dads42-3659/about" class="btn-big" target="_blank" rel="noopener">
       Join Dads'42 Free →
     </a>
@@ -1488,7 +1669,7 @@
 
 <!-- SCRIPTS -->
 <script>
-  // Scroll-triggered reveal animations
+  // Scroll-triggered reveal animations (with varied directions)
   (function() {
     var reveals = document.querySelectorAll('.reveal');
     if (!reveals.length) return;
@@ -1505,9 +1686,47 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
     reveals.forEach(function(el) { observer.observe(el); });
+  })();
+
+  // Count-up animation for credential numbers
+  (function() {
+    var nums = document.querySelectorAll('.credential-num[data-target]');
+    if (!nums.length) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      nums.forEach(function(el) { el.textContent = el.getAttribute('data-target'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var target = parseInt(el.getAttribute('data-target'), 10);
+          var duration = 1200;
+          var start = null;
+
+          function step(timestamp) {
+            if (!start) start = timestamp;
+            var progress = Math.min((timestamp - start) / duration, 1);
+            // Ease out cubic
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(eased * target);
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            }
+          }
+
+          requestAnimationFrame(step);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    nums.forEach(function(el) { observer.observe(el); });
   })();
 
   // FAQ accordion
