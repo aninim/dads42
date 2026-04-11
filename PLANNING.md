@@ -74,18 +74,43 @@
 
 ## Status
 
-**Current phase:** Brand strategy & content system complete. Landing page built. Launch pending.
+**Current phase:** Strategy documentation complete. 12-week execution playbook defined (Skool → TikTok/IG → email → paid). All brand assets ready. **Ready to execute, blocked by one prerequisite.**
 
-**Active task:** None — awaiting direction on which critical gap to tackle next.
+**Active task:** **BLOCKER — Fill dads42-context-checklist.md.** This is the raw material that turns generic content into authentic, specific content that converts. Without it, all downstream work (Founder Story, lead magnet, every hook) will lack specificity. Oren must complete before Codi builds.
 
-**Backlog — 7 Critical Gaps:**
-1. **Founder Story Post** — Most important content piece. Raw, personal, 800–1200 words. Write this first.
-2. **Self-Guided Dad Manifesto** — 1-page PDF. Philosophy distilled. Shareable. Free lead magnet.
-3. **Machin × Adler × Aurelius Cheat Sheet** — One page, three columns. Intellectual backbone made tangible.
-4. **Dad Compass Card** — 4-pillar framework (Mind / Heart / Hands / Body) on one printable card.
-5. **Week 1 Video Hooks (Dads'42 voice)** — Existing hooks are warm/friendly. Need rewriting to be direct, identity-first.
-6. **$97 Sales Page** — Formula in `docs/dads42-pricing-strategy.md`. Execution task.
-7. **Instagram Bio + Link-in-bio** — 3-second decision point. Sharp, identity-first, one CTA to Skool.
+**Execution Sequence (12 weeks):**
+
+**Weeks 1–3: Infrastructure & Infiltration**
+- ⬜ Fill context checklist (Oren)
+- ⬜ Seed Skool with 15 posts (from brand bible + moments + playbook)
+- ⬜ Identify 10 dad communities (Reddit, Facebook, Instagram hashtags)
+
+**Weeks 3–6: Relationship & Content**
+- ⬜ Founder Story Post (from checklist answers) — pinned post, about page, brand origin
+- ⬜ Lead Magnet Design (interactive quiz preferred over PDF: "What Kind of Dad Are You?")
+- ⬜ Start daily short-form video (TikTok + Instagram Reels with 3 Core Moments as visual anchor)
+- ⬜ ManyChat setup on Instagram (comment-to-DM automation + lead magnet delivery)
+
+**Weeks 5–8: Warm Launch & Engagement**
+- ⬜ Invite first 20–30 founding members + personal onboarding calls
+- ⬜ Email list seeding via Kit or Beehiiv (free tier: 10K subscribers unlimited emails)
+- ⬜ Kickoff Zoom call + member accountability pairs
+- ⬜ Weekly rhythm: Mission Monday, Wednesday teaching/AMA, Friday Dad Wins, Thursday live call
+
+**Weeks 8–12: Strategic Amplification**
+- ⬜ Cross-promotion with adjacent creators
+- ⬜ Guest on smaller parenting podcasts
+- ⬜ Launch on OpenHunts + BetaList
+- ⬜ Transition to paid (founding members get 50% permanent discount)
+
+**Supplementary Content (map to 7 Gaps, secondary priority):**
+1. **Self-Guided Dad Manifesto** — 1-page PDF (free lead magnet if quiz isn't used)
+2. **Machin × Aurelius Cheat Sheet** — One page, three columns (bonus for email tier)
+3. **Dad Compass Card** — 4-pillar printable (Level 5+ unlock in Skool gamification)
+4. **Video Hooks Rewrite** — Apply new brand voice v2 (direct, identity-first, gain-focused)
+5. **$97 Sales Page** — Premium tier formula (after proving $29/mo standard tier works)
+6. **Instagram Bio + Link-in-bio** — Once audience exists (don't optimize empty profile)
+7. **Illustration Assets** — Peanuts-style moments (after content pillars are proven)
 
 ---
 
@@ -96,6 +121,12 @@
 - [2026-04] Migrated to 2-file doc standard (CLAUDE.md + PLANNING.md)
 - [2026-04-01] Restructured `files/` → `docs/`, `src/`, `tools/` — generic folder names are an anti-pattern
 - [2026-04-01] YAML frontmatter in PLANNING.md deferred — logged to infra backlog
+- [2026-04-02] GTM as analytics layer — manage tags from UI without code deploys
+- [2026-04-02] GitHub Pages chosen over Netlify/Cloudflare Pages — repo made public, infrastructure stays simple
+- [2026-04-09] 12-week execution playbook adopted (zero to 100 members) — sequenced Skool seeding → TikTok/IG → email list → paid transition at week 8
+- [2026-04-09] Context checklist marked as BLOCKER — all content must be specific & authentic, generic content will not convert
+- [2026-04-09] Lead magnet priority: interactive quiz over PDF (playbook: 20–40% vs 5–10% conversion)
+- [2026-04-09] ManyChat comment-to-DM funnel adopted as primary Instagram growth mechanic (80%+ DM open rate, 15–25% funnel conversion)
 
 ---
 
@@ -113,3 +144,41 @@
 
 **Next:**
 - Pick a gap from the 7 Critical Gaps backlog (Founder Story Post recommended first)
+
+### Session 2026-04-02
+**Completed:**
+- Audited landing page against frontend-design skill — identified 7 design gaps
+- Set landing page KPIs: CTA CTR >5%, email capture >3%, scroll depth >60% to FAQ, time on page >90s, bounce <50%, load <2s
+- Full v2 rewrite of `index.html`: Manrope font, 6 scroll reveal variants (up/left/right/scale/clip/fade), 3-zone color architecture, CSS marquee (brand pillars), count-up credential stats, sticky creator photo, reversed creator grid via `direction:rtl`, bolder hover micro-interactions
+- Replaced hardcoded GA4 snippet with GTM container `GTM-T23FFX3Q` (head script + noscript fallback); GA4 tag `G-E6GKSRQHE8` managed from GTM UI
+- Updated frontend-design skill with 6 implementation patterns: count-up (vanilla JS), CSS marquee, grid reversal via RTL, sticky elements, stagger delays, scroll reveal system
+- Deployed to GitHub Pages (repo made public, Pages enabled from master/root)
+- DNS pointed to GitHub Pages via Cloudflare (4 A records + CNAME www)
+- Removed "2 patents" and "25 video scripts" references from bio, credentials, lead magnet copy
+
+**Decisions:**
+- Use GTM as analytics layer — more flexible than hardcoded gtag, manage tags from UI without code deploys
+- GitHub Pages over Netlify/Cloudflare Pages — repo made public, keeps infrastructure simple
+
+**Next:**
+- Add Oren's real photo to creator section (currently shows "O" placeholder)
+- Wire email capture form to an email service
+- Publish GTM workspace (Submit in GTM UI — required for tags to fire on live site)
+- Pick a gap from the 7 Critical Gaps backlog (Founder Story Post recommended first)
+
+### Session 2026-04-09
+**Completed:**
+- Read docs added since last session: launch playbook (12-week sequence), brand voice bible v2 (gain-focused philosophy + 3 core moments), 3 moment breakdowns (Pause/Witness/Repair), context checklist (10-section intake form)
+- Updated CLAUDE.md asset inventory to reflect all new docs (9 strategy docs now listed, 3 moment files, playbook)
+- Recalibrated PLANNING.md: mapped 7 gaps to 12-week playbook sequence (execution order now: checklist → Skool seeding → Founder Story + lead magnet → TikTok/IG + ManyChat → email → paid transition)
+- Identified BLOCKER: context checklist must be filled by Oren before any authentic content can be created
+
+**Decisions:**
+- Context checklist is prerequisite, not optional — all downstream content (Founder Story, hooks, lead magnet copy) requires specificity from this checklist
+- Lead magnet format: interactive quiz (20–40% conversion) preferred over PDF (5–10%)
+- ManyChat comment-to-DM on Instagram is primary growth mechanic (80% DM open rate, 10–12x funnel lift)
+- Suppress secondary gaps (Manifesto, Cheat Sheet, Compass Card) until core 12-week sequence proves out
+
+**Next:**
+- Oren completes context checklist — this unblocks all execution work
+- Once checklist is filled: write Founder Story Post + design lead magnet quiz + seed Skool with 15 posts

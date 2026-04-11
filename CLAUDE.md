@@ -31,11 +31,16 @@ See PLANNING.md for product strategy, brand voice, content system, and backlog.
 **`docs/`** — Strategy & reference
 | File | Status | Notes |
 |------|--------|-------|
-| `dads42-brand-bible.md` | ✅ Complete | 9-section brand & voice bible |
+| `The Dads42 launch playbook - zero to 100 members in 2026.md` | ✅ Complete | 12-week execution sequence: Skool seeding → infiltration → warm launch → TikTok/IG/ManyChat → email → paid |
+| `dads42-brand-voice-bible-v2.md` | ✅ Complete | v2: gain-focused philosophy, 3 core moments, illustration direction (Peanuts warmth), expanded copy bank |
+| `moment-01-the-pause.md` | ✅ Complete | Core moment 1: dad stops for child, kid gains worth + confidence |
+| `moment-02-the-witness.md` | ✅ Complete | Core moment 2: dad witnesses kid, kid gains autonomy + being known |
+| `moment-03-the-repair.md` | ✅ Complete | Core moment 3: dad repairs after mess-up, kid gains resilience + accountability |
+| `dads42-brand-bible.md` | ✅ Complete | v1 — superseded by v2, keep for archive |
 | `dads42-content-machine.md` | ✅ Complete | Weekly engine, 20 hooks, repurpose map, pain bank, freeze breakers |
-| `dads42-master-asset-map.md` | ✅ Complete | All assets + critical path + 7 gaps |
+| `dads42-master-asset-map.md` | ✅ Complete | All assets + critical path (now mapped to 12-week playbook) |
 | `dads42-pricing-strategy.md` | ✅ Complete | Full product ladder + sales page formula |
-| `dads42-context-checklist.md` | ⬜ Unfilled | Oren needs to fill in — raw material for content creation |
+| `dads42-context-checklist.md` | ⬜ Unfilled | **BLOCKER** — Oren must fill in before content creation starts (raw material for authenticity) |
 
 **`src/`** — Deployable deliverables
 | File | Status | Notes |
