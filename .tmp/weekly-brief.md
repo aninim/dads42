@@ -1,49 +1,36 @@
-# Dads'42 Weekly Brief — 2026-04-13
+# Dads'42 Weekly Brief — 2026-04-20
 
-**Phase:** Month 1 — Foundation (goal: 50 Skool members)
-**Status:** Pre-launch. Landing page built, Squarespace deploy still pending. No content posted yet. Machine hasn't started.
-
----
-
-## 📅 This Week
-
-**Monday, Apr 13 — Identity/Ego | Reel or Written**
-
-> *"Nobody told you your brain physically rewired the day you became an active dad."*
-
-Hook from the library. Anna Machin's research as the grounding. Land on: "Evolution built you for this. You didn't need a manual. You needed someone to remind you." Written post is the lowest-barrier entry point — 150 words, bold the hook, CTA to Skool. No camera required. Get the first post live.
+**Phase:** Month 1 — Foundation · Target: 50 Skool members  
+**Status:** Brand + content system complete. Landing page built. Launch pending.
 
 ---
 
-**Tuesday, Apr 14 — Dark Humor | Reel or Carousel**
+## 📅 This Week (Mon Apr 20 – Fri Apr 24)
 
-> *"3 things nobody warns you about the moment you lose your temper with your kid."*
+**Mon — Identity/Ego** · Reel or Written  
+Hook: *"Nobody told you your brain physically rewired the day you became an active dad."*  
+Follow with Anna Machin's finding — active fatherhood triggers the same neurological transformation as motherhood, through a different mechanism: play, presence, risk. Close: "Evolution built you for this. You didn't know that. Now you do."  
+Format: Written post, 150–200 words. Bold the hook. CTA → Skool link.
 
-Relatable, honest, gets shared at 11pm. Carousel: slide 1 = hook, slides 2–4 = the 3 things (keep them real, not therapeutic), slide 5 flips it — "None of this means you're broken. It means you're in it." CTA: "The room where we talk about this → link in bio."
+**Tue — Dark Humor** · Reel or Carousel  
+Hook: *"Fatherhood is just googling 'is this normal' at 2am for 18 years."*  
+Expand with 3–4 relatable late-night dad scenarios (the temperature check at midnight, the meltdown math, the sock negotiation). No punchline needed — recognition IS the joke.  
+Format: Reel or 5-slide carousel. Slide 1 = the hook. Slide 5 = "You're in the right room → [link]".
 
----
+**Wed — Tactical Win** · Carousel  
+Hook: *"Science says your kids don't need you to be perfect. They need you to be present — and repair when you're not."*  
+6-slide carousel: hook → the repair framework (acknowledge, own it, reconnect, move forward) → one slide each → CTA to Skool.  
+Source: Machin research on rupture-repair cycles in father-child bonding.
 
-**Wednesday, Apr 15 — Tactical Win | Carousel**
+**Thu — Confessional** · Talking Head or Written  
+Hook: *"I'm going to tell you something I've never said out loud. The night I sat in the car for 20 minutes before going inside."*  
+This is the trust post. What were you carrying that night? What did you decide when you finally opened the door? Don't resolve it too cleanly — the tension is the point. Close: "Most dads I know have had this night. Almost none of them say it out loud."  
+Format: Talking head (60–90 sec) or written, 200 words max. No carousel — this needs a face or a voice.
 
-> *"The research found that 3 minutes of focused connection beats 3 hours of passive presence. Every single time."*
-
-Machin-backed. Actionable today. 6-slide structure: Slide 1 = hook. Slides 2–4 = what focused connection actually looks like (no screens, get to eye level, ask a real question, name what you see). Slide 5 = "This isn't advice. It's neuroscience." Slide 6 = CTA to Skool.
-
----
-
-**Thursday, Apr 16 — Confessional | Written or Talking Head**
-
-> *"The night I realised I was becoming the dad I swore I'd never be."*
-
-One honest story. Don't resolve it too quickly — the tension is the content. End with: "Marcus Aurelius lost five children and still asked himself the same question the next morning. You're in the oldest conversation in human history." Written: 200 words max. Talking head: 60–90 seconds, no script.
-
----
-
-**Friday, Apr 17 — Us vs. Them | Written**
-
-> *"This is not a parenting community. This is a room where men remember who they were built to be."*
-
-Identity-first, tribe-building. Sets the tone going into the weekend Skool post. Four short paragraphs, punchy. End hard: "If that sounds right, you're already in the right place. [link in bio]" Don't soften the landing.
+**Fri — Us vs. Them** · Written  
+Hook: *"This is not a parenting community. This is a room where men remember who they were built to be."*  
+Drive the contrast: what Dads'42 is not (soft, therapeutic, curated) vs. what it is (grounded, earned, real). Two short paragraphs. End with something that makes a dad feel like he's already inside the tribe just by reading it.  
+Format: Written post. Post on IG + X. Watch the comments — this angle generates them.
 
 ---
 
@@ -51,31 +38,33 @@ Identity-first, tribe-building. Sets the tone going into the weekend Skool post.
 
 **Gap #1: Founder Story Post**
 
-**Why first:** The backlog rule is clear — if the Founder Story Post isn't done, it's always the priority. And it's not done. Practically: every other piece of content can point to it. The landing page is built but has no credibility anchor. When someone lands on the profile from this week's reels and asks "who is this guy?" — there's nothing there. The Founder Story is what earns the Skool invite CTA.
+Rule is explicit — if it's not done, it's always first. It's not done.
 
-**What done looks like:** One published post — written or short video — 800–1200 words. The arc: no strong male role model → became a father → Anna Machin cracked something open → Aurelius showed him the standard → built this room. Not polished. Honest. Live.
+Every piece of content this week points dads toward Skool. The Founder Story Post is what closes them. It's the piece a curious dad reads that shifts him from "interesting account" to "this guy gets it." Without it, you're driving traffic into a room with no front wall.
 
-This is the unlock. Once it's published, every other piece of content has somewhere to land.
+**Done looks like:** An 800–1,200 word post (IG long-form or carousel script) that opens with the wound — no blueprint, no role model — runs through the two books that changed everything (Machin, Aurelius), and lands on why Dads'42 exists. Written in Oren's voice, not brand voice. Raw and specific beats polished and general.
 
 ---
 
 ## 🤝 Community Move
 
-**Skool discussion prompt (post Saturday):**
+**Skool discussion prompt — post Saturday.**
 
-> *"Which era of fatherhood got it most right — and which got it most wrong? I'll go first."*
+> *"Which era of fatherhood do you think had it most figured out — and what did we lose when we left it behind?"*
 
-Oren drops a 3-sentence take in the comments (e.g., hunter-gatherer presence vs. Industrial Revolution absent-dad model). Ties directly to Wednesday's Tactical Win carousel — same raw source, Skool version. One idea, two pieces. Low pressure for early members to answer, high-resonance when they do. Reply to every response in the first hour — that's how the first flywheel starts.
+This pulls from the evolution angle (hunter-gatherer → agricultural → industrial) and works because there's no right answer. Every response validates the tribe's shared belief that something was lost and worth recovering. Oren drops a 3-sentence take first to open it up. Respond to the first 5 comments within 30 minutes of posting — that's how the early flywheel starts.
+
+Angle: Identity/Ego + Us vs. Them. Dads who engage here self-select as exactly who you want in the room.
 
 ---
 
 ## ⚡ Momentum
 
-- **Done:** 2026-04-01 — Full doc migration (PLANNING.md + CLAUDE.md), semantic folder restructure (`docs/`, `src/`, `tools/`), global template updated
+- **Completed (Apr 1):** Migrated to 2-file doc standard; restructured `files/` into `docs/`, `src/`, `tools/`
 - **Flagged as Next:** Founder Story Post (Gap #1) — still the first move, still not done
-- **Pending — deploy:** Landing page (`src/dads42-landing.html`) needs to go live on Squarespace before content drives real traffic — this is blocking the GTM funnel
-- **Pending — infrastructure:** Instagram bio + link-in-bio (Gap #7) needs to be sharp before this week's posts go out; email capture not yet set up (Month 2, but wire it early)
+- **Pending — deploy:** Landing page (`src/dads42-landing.html`) needs to go live on Squarespace before this week's content drives real traffic
+- **Pending — infrastructure:** Instagram bio + link-in-bio (Gap #7) needs to be sharp before posts go out; email capture not yet wired
 
 ---
 
-*Brief generated by Codi · 2026-04-13*
+*Generated by Codi · 2026-04-20*
