@@ -2,7 +2,10 @@
 .env
 .env.local
 .agents/
+.firebase/
 *.log
 node_modules/
 skills-lock.json
 codi inbox/
+/package-lock.json
+

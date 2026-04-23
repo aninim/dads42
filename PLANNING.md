@@ -74,9 +74,14 @@
 
 ## Status
 
-**Current phase:** Strategy documentation complete. 12-week execution playbook defined (Skool → TikTok/IG → email → paid). All brand assets ready. **Ready to execute, blocked by one prerequisite.**
+**Current phase:** Folder restructured into 6-room operational system (content/research/community/inbound + docs/src/tools/functions). Ready for content + community work.
 
-**Active task:** **BLOCKER — Fill dads42-context-checklist.md.** This is the raw material that turns generic content into authentic, specific content that converts. Without it, all downstream work (Founder Story, lead magnet, every hook) will lack specificity. Oren must complete before Codi builds.
+**For Oren:**
+- [ ] Rotate Resend API key — `re_DoCtuwhx...` is live in public git history. Revoke at resend.com/api-keys, paste new key into Firebase env.
+- [ ] Fill context checklist — `docs/dads42-context-checklist.md`. Unblocks Founder Story, lead magnet, every hook.
+
+**For Codi (next session):**
+- [ ] Fix email capture — Firebase Function `captureEmail` build failed Apr 20. Start with Cloud Build logs at console.cloud.google.com. Then set `RESEND_API_KEY` env var + redeploy + test end-to-end.
 
 **Execution Sequence (12 weeks):**
 
@@ -127,6 +132,9 @@
 - [2026-04-09] Context checklist marked as BLOCKER — all content must be specific & authentic, generic content will not convert
 - [2026-04-09] Lead magnet priority: interactive quiz over PDF (playbook: 20–40% vs 5–10% conversion)
 - [2026-04-09] ManyChat comment-to-DM funnel adopted as primary Instagram growth mechanic (80%+ DM open rate, 15–25% funnel conversion)
+- [2026-04-23] 6-room folder structure adopted (`content/`, `research/`, `community/`, `inbound/` + existing `docs/`, `src/`, `tools/`, `functions/`) — separates personal/growing rooms from technical rooms, mirrors Jake Van Clief's "folder-architecture-as-operational-system" pattern
+- [2026-04-23] Per-room CLAUDE.md + routing table in root — load only the room context needed per task, save tokens
+- [2026-04-23] Firebase Cloud Function is canonical email capture path — Google Apps Script approach killed
 
 ---
 
@@ -194,3 +202,25 @@
 **Next:**
 - Oren completes context checklist (BLOCKER) — unblocks Founder Story Post, lead magnet quiz design, and Skool seeding work
 - Work on founder story interview doc (dads42-founder-story-interview.md)
+
+### Session 2026-04-23
+**Completed:**
+- Researched Jake Van Clief's operational model (Skool hub + depth-as-viral-driver + folder-architecture-as-system)
+- Restructured dads42 into 6-room system: `content/` (drafts/published/inbox), `research/` (books/insights/external), `community/` (skool/email/instagram), `inbound/` (leads/conversations) — plus existing `docs/`, `src/`, `tools/`, `functions/`
+- Moved all `books/` PDFs → `research/books/` (Anna Machin extracted.md + metadata → `research/insights/`)
+- Absorbed `files/` content: email welcome sequence → `community/email/`, explainer video + feature cards + hero copy → `content/drafts/`, website improvement plan → `docs/`
+- Deleted abandoned: `google-apps-script.gs` (Firebase won), stray `.gdoc` Drive pointer, root `package-lock.json` stub, `.gitkeep`, `firebase-debug.log`
+- Added routing table to root CLAUDE.md (token-saving — load only the room you need)
+- Wrote per-room CLAUDE.md for `content/`, `research/`, `community/`, `inbound/` — each defines purpose, structure, rules, and rules for when Codi should/shouldn't touch
+- Updated `.gitignore`: added `.firebase/`, `/package-lock.json` (root only — `functions/package-lock.json` stays tracked for reproducible deploys)
+- Diagnosed email capture: Firebase Function never deployed (build failure Apr 20). Documented as active blocker.
+
+**Decisions:**
+- 6-room structure: `content/`, `research/`, `community/`, `inbound/` complement existing `docs/`, `src/`, `tools/`, `functions/`. Rooms separate personal/growing (Oren's brain) from technical/design (Codi's domain).
+- Per-room CLAUDE.md + routing table in root — load only the room context needed for a task. Saves tokens, prevents cross-contamination.
+- Firebase Cloud Function is the canonical email path. Google Apps Script approach killed.
+
+**Next:**
+- Commit restructure (separate from email fix)
+- Fix email capture: read Cloud Build failure logs → fix function → set `RESEND_API_KEY` env var → redeploy → test end-to-end
+- Then: Oren fills context checklist (still the content BLOCKER)
