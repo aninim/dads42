@@ -1,0 +1,22 @@
+{
+  "name": "dads42-functions",
+  "description": "Firebase Cloud Functions for dads42.com",
+  "type": "module",
+  "engines": {
+    "node": "20"
+  },
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0",
+    "firebase-functions": "^4.4.0",
+    "resend": "^3.0.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  }
+}

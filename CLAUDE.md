@@ -7,8 +7,8 @@
 
 **Name:** Dads'42  
 **Owner:** Oren Elimelech  
-**Platform:** dads42.com (Squarespace) + Skool (skool.com/dads42-3659)  
-**GitHub:** github.com/aninim — labs.dads42.com via GitHub Pages
+**Platform:** dads42.com (Firebase Hosting) + Skool (skool.com/dads42-3659)  
+**GitHub:** github.com/aninim — source repo (deploys via Firebase CLI)
 
 See PLANNING.md for product strategy, brand voice, content system, and backlog.
 
@@ -16,13 +16,13 @@ See PLANNING.md for product strategy, brand voice, content system, and backlog.
 
 ## Sub-Projects Under dads42.com
 
-| Subdomain | Project | Repo |
-|-----------|---------|------|
-| labs.dads42.com | GitHub Pages hub | dads42 repo |
-| digest.dads42.com | AI Digest | ai-digest repo |
-| dashboard.dads42.com | Life Dashboard | life-dashboard repo |
+| Subdomain | Project | Hosting |
+|-----------|---------|---------|
+| labs.dads42.com | Main hub (future) | Firebase Hosting |
+| digest.dads42.com | AI Digest | Cloud Run |
+| dashboard.dads42.com | Life Dashboard | Cloud Run |
 | homeassistant.dads42.com | Home Assistant | HA Green (local) |
-| modelhub.dads42.com | ModelHub | modelhub (planned) |
+| modelhub.dads42.com | ModelHub | Firebase Hosting (planned) |
 
 ---
 

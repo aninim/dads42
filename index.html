@@ -1538,10 +1538,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="leadmagnet-feat">10 Commandments</span>
     </div>
 
-    <!-- Replace action URL with your email service (Mailchimp, ConvertKit, etc.) -->
-    <form class="leadmagnet-form reveal reveal--up" action="#" method="POST">
+    <!-- Email capture form for Dad Origins Pack -->
+    <form class="leadmagnet-form reveal reveal--up" id="emailCaptureForm">
       <input type="email" name="email" placeholder="Your email address" required aria-label="Email address">
-      <button type="submit">Send It →</button>
+      <button type="submit" id="emailCaptureBtn">Send It →</button>
     </form>
 
     <p class="leadmagnet-trust reveal reveal--fade">No spam. No gentle parenting tips. Unsubscribe anytime.</p>
@@ -1758,6 +1758,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }, { threshold: 0 });
 
     observer.observe(hero);
+  })();
+
+  // Email capture form submission
+  (function() {
+    var form = document.getElementById('emailCaptureForm');
+    var btn = document.getElementById('emailCaptureBtn');
+    if (!form) return;
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      var email = form.querySelector('input[type="email"]').value.trim();
+      if (!email) return;
+
+      // Disable button during submission
+      btn.disabled = true;
+      var originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+
+      try {
+        var response = await fetch(
+          'https://us-central1-dads42.cloudfunctions.net/captureEmail',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email })
+          }
+        );
+
+        var data = await response.json();
+
+        if (data.success) {
+          btn.textContent = 'Email confirmed! ✓';
+          btn.style.background = 'var(--gold)';
+          form.querySelector('input[type="email"]').value = '';
+          setTimeout(function() {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 3000);
+        } else {
+          btn.textContent = 'Try again';
+          btn.disabled = false;
+        }
+      } catch (error) {
+        console.error('Form submission error:', error);
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    });
   })();
 </script>
 

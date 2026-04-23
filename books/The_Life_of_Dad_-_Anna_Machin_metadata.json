@@ -1,0 +1,71 @@
+{
+  "source_file": "c:\\Users\\anini\\TechDrive\\WORK\\Ccode VScode\\dads42\\books\\The_Life_of_Dad_-_Anna_Machin.pdf",
+  "total_pages": 221,
+  "extraction_method": "markitdown_chunked_25pages",
+  "chunks": [
+    {
+      "pages": "1-25",
+      "method": "markitdown",
+      "status": "success",
+      "chars": 35893
+    },
+    {
+      "pages": "26-50",
+      "method": "markitdown",
+      "status": "success",
+      "chars": 60902
+    },
+    {
+      "pages": "51-75",
+      "method": "markitdown",
+      "status": "success",
+      "chars": 64848
+    },
+    {
+      "pages": "76-100",
+      "method": "markitdown",
+      "status": "success",
+      "chars": 66787
+    },
+    {
+      "pages": "101-125",
+      "method": "markitdown",
+      "status": "success",
+      "chars": 65704
+    },
+    {
+      "pages": "126-150",
+      "method": "markitdown",
+      "status": "success",
+      "chars": 61622
+    },
+    {
+      "pages": "151-175",
+      "method": "markitdown",
+      "status": "success",
+      "chars": 68691
+    },
+    {
+      "pages": "176-200",
+      "method": "markitdown",
+      "status": "success",
+      "chars": 55866
+    },
+    {
+      "pages": "201-221",
+      "method": "markitdown",
+      "status": "success",
+      "chars": 18484
+    }
+  ],
+  "extracted_chars": 498797,
+  "extracted_pages": 221,
+  "failed_pages": [],
+  "successful_chunks": 9,
+  "total_chunks": 9,
+  "timestamp": "2026-04-08T23:04:49.485140",
+  "tool_versions": {
+    "markitdown": "latest",
+    "docling": "latest (fallback)"
+  }
+}

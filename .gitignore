@@ -1,0 +1,8 @@
+.tmp/
+.env
+.env.local
+.agents/
+*.log
+node_modules/
+skills-lock.json
+codi inbox/
