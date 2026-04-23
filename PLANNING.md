@@ -77,11 +77,20 @@
 **Current phase:** Folder restructured into 6-room operational system (content/research/community/inbound + docs/src/tools/functions). Ready for content + community work.
 
 **For Oren:**
-- [ ] Rotate Resend API key — `re_DoCtuwhx...` is live in public git history. Revoke at resend.com/api-keys, paste new key into Firebase env.
-- [ ] Fill context checklist — `docs/dads42-context-checklist.md`. Unblocks Founder Story, lead magnet, every hook.
+
+- [ ] **Rotate Resend API key** — live key in public git history, must revoke now
+  1. DONE
+
+- [ ] **Fill context checklist** — raw material for all authentic content, unblocks everything
+  1. Open `docs/dads42-context-checklist.md`
+  2. Answer every section in your own words — raw and honest beats polished, this is source material not a deliverable
+  3. When done, add `STATUS: FILLED` at the top of the file
+  4. Next session: tell Codi "checklist done" → Codi reads it and starts writing Founder Story + lead magnet
 
 **For Codi (next session):**
 - [ ] Fix email capture — Firebase Function `captureEmail` build failed Apr 20. Start with Cloud Build logs at console.cloud.google.com. Then set `RESEND_API_KEY` env var + redeploy + test end-to-end.
+1. new api key by oren: 're_DfJZQmAQ_91XDNEeFUbWp4gAchLFyA7tM'
+
 
 **Execution Sequence (12 weeks):**
 
@@ -211,16 +220,21 @@
 - Absorbed `files/` content: email welcome sequence → `community/email/`, explainer video + feature cards + hero copy → `content/drafts/`, website improvement plan → `docs/`
 - Deleted abandoned: `google-apps-script.gs` (Firebase won), stray `.gdoc` Drive pointer, root `package-lock.json` stub, `.gitkeep`, `firebase-debug.log`
 - Added routing table to root CLAUDE.md (token-saving — load only the room you need)
-- Wrote per-room CLAUDE.md for `content/`, `research/`, `community/`, `inbound/` — each defines purpose, structure, rules, and rules for when Codi should/shouldn't touch
-- Updated `.gitignore`: added `.firebase/`, `/package-lock.json` (root only — `functions/package-lock.json` stays tracked for reproducible deploys)
-- Diagnosed email capture: Firebase Function never deployed (build failure Apr 20). Documented as active blocker.
+- Wrote per-room CLAUDE.md for `content/`, `research/`, `community/`, `inbound/` — each defines purpose, structure, rules
+- Updated `.gitignore`: added `.firebase/`, `/package-lock.json` (root only — `functions/package-lock.json` stays tracked)
+- Diagnosed email capture: Firebase Function never deployed (build failure Apr 20)
+- Introduced "For Oren / For Codi" owned checklist format in PLANNING.md Status (replaces need for separate HANDOFF.md)
+- Updated global CLAUDE.md + memory with new Status format standard + requirement that "For Oren" items include numbered steps (non-developer detail level)
+- Added detailed step-by-step instructions for both current "For Oren" items (Resend key rotation, context checklist)
+- Committed restructure: `chore: restructure into 6-room operational system`
 
 **Decisions:**
-- 6-room structure: `content/`, `research/`, `community/`, `inbound/` complement existing `docs/`, `src/`, `tools/`, `functions/`. Rooms separate personal/growing (Oren's brain) from technical/design (Codi's domain).
-- Per-room CLAUDE.md + routing table in root — load only the room context needed for a task. Saves tokens, prevents cross-contamination.
-- Firebase Cloud Function is the canonical email path. Google Apps Script approach killed.
+- 6-room structure: `content/`, `research/`, `community/`, `inbound/` separate personal/growing (Oren's brain) from technical (Codi's domain)
+- Per-room CLAUDE.md + routing table in root — load only what's needed per task (token-efficient)
+- "For Oren / For Codi" owned checklists in PLANNING.md Status — replaces separate HANDOFF.md, `/new-session` reads it first
+- All "For Oren" items must include numbered steps at non-developer detail (URLs, UI paths, copy-paste values — assume no terminal access)
+- Firebase Cloud Function is canonical email path (Google Apps Script approach killed, Resend key was exposed in git history — must rotate)
 
 **Next:**
-- Commit restructure (separate from email fix)
-- Fix email capture: read Cloud Build failure logs → fix function → set `RESEND_API_KEY` env var → redeploy → test end-to-end
-- Then: Oren fills context checklist (still the content BLOCKER)
+- Oren: rotate Resend API key (5 min, steps in PLANNING.md), fill context checklist (raw + honest, unblocks all content)
+- Codi: fix email capture (diagnose Firebase build failure → fix code → set env var → redeploy → test)
