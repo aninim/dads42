@@ -74,23 +74,9 @@
 
 ## Status
 
-**Current phase:** Folder restructured into 6-room operational system (content/research/community/inbound + docs/src/tools/functions). Ready for content + community work.
+**Current phase:** Strategy documentation complete. 12-week execution playbook defined (Skool → TikTok/IG → email → paid). All brand assets ready. **Ready to execute, blocked by one prerequisite.**
 
-**For Oren:**
-
-- [ ] **Rotate Resend API key** — live key in public git history, must revoke now
-  1. DONE
-
-- [ ] **Fill context checklist** — raw material for all authentic content, unblocks everything
-  1. Open `docs/dads42-context-checklist.md`
-  2. Answer every section in your own words — raw and honest beats polished, this is source material not a deliverable
-  3. When done, add `STATUS: FILLED` at the top of the file
-  4. Next session: tell Codi "checklist done" → Codi reads it and starts writing Founder Story + lead magnet
-
-**For Codi (next session):**
-- [ ] Fix email capture — Firebase Function `captureEmail` build failed Apr 20. Start with Cloud Build logs at console.cloud.google.com. Then set `RESEND_API_KEY` env var + redeploy + test end-to-end.
-1. new api key by oren: 're_DfJZQmAQ_91XDNEeFUbWp4gAchLFyA7tM'
-
+**Active task:** **BLOCKER — Fill dads42-context-checklist.md.** This is the raw material that turns generic content into authentic, specific content that converts. Without it, all downstream work (Founder Story, lead magnet, every hook) will lack specificity. Oren must complete before Codi builds.
 
 **Execution Sequence (12 weeks):**
 
@@ -141,9 +127,7 @@
 - [2026-04-09] Context checklist marked as BLOCKER — all content must be specific & authentic, generic content will not convert
 - [2026-04-09] Lead magnet priority: interactive quiz over PDF (playbook: 20–40% vs 5–10% conversion)
 - [2026-04-09] ManyChat comment-to-DM funnel adopted as primary Instagram growth mechanic (80%+ DM open rate, 15–25% funnel conversion)
-- [2026-04-23] 6-room folder structure adopted (`content/`, `research/`, `community/`, `inbound/` + existing `docs/`, `src/`, `tools/`, `functions/`) — separates personal/growing rooms from technical rooms, mirrors Jake Van Clief's "folder-architecture-as-operational-system" pattern
-- [2026-04-23] Per-room CLAUDE.md + routing table in root — load only the room context needed per task, save tokens
-- [2026-04-23] Firebase Cloud Function is canonical email capture path — Google Apps Script approach killed
+- [2026-04-27] One-off pages unrelated to the dads42 brand split into sibling project [`dads42-extras/`](../dads42-extras/). Each page = own Firebase Hosting site under the `dads42` Firebase project + own subdomain (e.g., `trip.dads42.com`). Keeps dads42 deploy focused on the brand; isolates lifecycle and analytics per page.
 
 ---
 
@@ -212,29 +196,43 @@
 - Oren completes context checklist (BLOCKER) — unblocks Founder Story Post, lead magnet quiz design, and Skool seeding work
 - Work on founder story interview doc (dads42-founder-story-interview.md)
 
-### Session 2026-04-23
-**Completed:**
-- Researched Jake Van Clief's operational model (Skool hub + depth-as-viral-driver + folder-architecture-as-system)
-- Restructured dads42 into 6-room system: `content/` (drafts/published/inbox), `research/` (books/insights/external), `community/` (skool/email/instagram), `inbound/` (leads/conversations) — plus existing `docs/`, `src/`, `tools/`, `functions/`
-- Moved all `books/` PDFs → `research/books/` (Anna Machin extracted.md + metadata → `research/insights/`)
-- Absorbed `files/` content: email welcome sequence → `community/email/`, explainer video + feature cards + hero copy → `content/drafts/`, website improvement plan → `docs/`
-- Deleted abandoned: `google-apps-script.gs` (Firebase won), stray `.gdoc` Drive pointer, root `package-lock.json` stub, `.gitkeep`, `firebase-debug.log`
-- Added routing table to root CLAUDE.md (token-saving — load only the room you need)
-- Wrote per-room CLAUDE.md for `content/`, `research/`, `community/`, `inbound/` — each defines purpose, structure, rules
-- Updated `.gitignore`: added `.firebase/`, `/package-lock.json` (root only — `functions/package-lock.json` stays tracked)
-- Diagnosed email capture: Firebase Function never deployed (build failure Apr 20)
-- Introduced "For Oren / For Codi" owned checklist format in PLANNING.md Status (replaces need for separate HANDOFF.md)
-- Updated global CLAUDE.md + memory with new Status format standard + requirement that "For Oren" items include numbered steps (non-developer detail level)
-- Added detailed step-by-step instructions for both current "For Oren" items (Resend key rotation, context checklist)
-- Committed restructure: `chore: restructure into 6-room operational system`
+### Session 2026-04-26
 
-**Decisions:**
-- 6-room structure: `content/`, `research/`, `community/`, `inbound/` separate personal/growing (Oren's brain) from technical (Codi's domain)
-- Per-room CLAUDE.md + routing table in root — load only what's needed per task (token-efficient)
-- "For Oren / For Codi" owned checklists in PLANNING.md Status — replaces separate HANDOFF.md, `/new-session` reads it first
-- All "For Oren" items must include numbered steps at non-developer detail (URLs, UI paths, copy-paste values — assume no terminal access)
-- Firebase Cloud Function is canonical email path (Google Apps Script approach killed, Resend key was exposed in git history — must rotate)
+**Completed:**
+
+- Fixed email capture endpoint (401 error): replaced invalid Resend API key with valid key (stored in `.env`, never committed)
+- Fixed Firebase admin SDK import in Cloud Functions (`import * as admin` → `import admin` for ES modules)
+- Added `dads42.web.app` to CORS allowed origins in captureEmail function
+- Deployed updated index.html to Firebase Hosting (`dads42.web.app`)
+- **Diagnosed root cause of email failures:** Cloud Firestore API was disabled for project dads42 — permission errors, not code errors
+- Initialized Firebase emulator for local testing and debugging
+- Refactored Resend client to use `process.env.RESEND_API_KEY` directly (avoids deprecated `functions.config()`)
+
+**Blockers:**
+
+- Cloud Firestore API must be enabled in GCP Console
+- RESEND_API_KEY environment variable needs verification in Firebase runtime
 
 **Next:**
-- Oren: rotate Resend API key (5 min, steps in PLANNING.md), fill context checklist (raw + honest, unblocks all content)
-- Codi: fix email capture (diagnose Firebase build failure → fix code → set env var → redeploy → test)
+
+- Enable Cloud Firestore API in GCP (link in function error logs)
+- Redeploy functions and test end-to-end email capture
+- Once working: commit and mark email capture as ✅ Ready
+
+### Session 2026-04-27
+
+**Completed:**
+
+- Built Karpathos August 2026 family itinerary page (editorial design, 11 photos), self-hosted images after diagnosing Wikimedia `/thumb/` hotlink-block (400 from non-WP origins)
+- Iterated through three hosting models in one session: subdomain (`trip.dads42.com` via multi-site) → path (`dads42.com/trip` via single-site) → spun off entirely into sibling project [`dads42-extras/`](../dads42-extras/) with its own subdomain
+- Reverted `firebase.json` + `.firebaserc` to single-site; redeployed main to flush the orphan `/trip` files (now 404)
+- Updated CLAUDE.md Infrastructure note + sub-projects table to point at `dads42-extras/` for non-brand pages
+
+**Decisions:**
+
+- Pages unrelated to the dads42 brand do NOT live in this project — they go in [`dads42-extras/`](../dads42-extras/) with their own subdomains. Reasoning: keeps the dads42 deploy and doc surface focused on the brand; isolates lifecycle, analytics, and blast radius per page.
+- Self-host external images instead of hotlinking — bypass hotlink-blocking, faster, no external dependency
+
+**Next:**
+
+- Unrelated to today's work, still open: complete context checklist (BLOCKER for content work)

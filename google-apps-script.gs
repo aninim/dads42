@@ -3,8 +3,8 @@
 // Execute as: your email (oren.elimelech@...)
 // Who has access: Anyone
 
-const RESEND_API_KEY = "re_DoCtuwhx_6GbKGFSTtKSfwiLpjT3kvMsx";
-const SHEET_ID = "YOUR_SHEET_ID"; // Fill in after creating the sheet
+const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
+const SHEET_ID = "1DhPaHZkaU5LHBQKP_fppSK0F-Z_R2xmAGFZ5sdi4DwA"; // Fill in after creating the sheet
 const SHEET_NAME = "Email Captures";
 
 /**
