@@ -1,70 +1,61 @@
-# Dads'42 Weekly Brief — 2026-04-20
+# Dads'42 Weekly Brief — 2026-04-27
 
-**Phase:** Month 1 — Foundation · Target: 50 Skool members  
-**Status:** Brand + content system complete. Landing page built. Launch pending.
+**Phase:** Month 1 — Foundation (target: 50 Skool members)  
+**Week:** ~4 of 12 · Transitioning from Infrastructure into Content & Relationship
 
 ---
 
-## 📅 This Week (Mon Apr 20 – Fri Apr 24)
+## 📅 This Week
 
-**Mon — Identity/Ego** · Reel or Written  
-Hook: *"Nobody told you your brain physically rewired the day you became an active dad."*  
-Follow with Anna Machin's finding — active fatherhood triggers the same neurological transformation as motherhood, through a different mechanism: play, presence, risk. Close: "Evolution built you for this. You didn't know that. Now you do."  
-Format: Written post, 150–200 words. Bold the hook. CTA → Skool link.
+**Mon · Identity/Ego — Reel or Written**  
+Hook: *"Your kid doesn't need you to have the answers. They need you to stay in the room when you don't."*  
+Lead with the gap between the dad you planned to be and the one showing up tonight — and reframe it as presence, not failure. Land on Machin: *active fatherhood rewires the brain through exactly this — staying, not solving.* Format: written post, 150–200 words. Bold the hook. CTA → Skool.
 
-**Tue — Dark Humor** · Reel or Carousel  
+**Tue · Dark Humor — Reel or Carousel**  
 Hook: *"Fatherhood is just googling 'is this normal' at 2am for 18 years."*  
-Expand with 3–4 relatable late-night dad scenarios (the temperature check at midnight, the meltdown math, the sock negotiation). No punchline needed — recognition IS the joke.  
-Format: Reel or 5-slide carousel. Slide 1 = the hook. Slide 5 = "You're in the right room → [link]".
+Stack 3–4 relatable late-night dad scenarios: the temperature check at midnight, the sock negotiation, the toddler logic that somehow wins. No punchline needed — recognition IS the joke. Format: short reel or 5-slide carousel. No CTA — just the share. This is the 11pm scroll post.
 
-**Wed — Tactical Win** · Carousel  
-Hook: *"Science says your kids don't need you to be perfect. They need you to be present — and repair when you're not."*  
-6-slide carousel: hook → the repair framework (acknowledge, own it, reconnect, move forward) → one slide each → CTA to Skool.  
-Source: Machin research on rupture-repair cycles in father-child bonding.
+**Wed · Tactical Win — Carousel**  
+Hook: *"The research found that 3 minutes of focused connection beats 3 hours of passive presence. Every single time."*  
+Slides: What 3 minutes actually looks like (phone down, eye level, no agenda). What passive presence is. Why the brain responds to quality not duration. Machin evidence on slide 3. CTA on slide 10 → Skool.
 
-**Thu — Confessional** · Talking Head or Written  
-Hook: *"I'm going to tell you something I've never said out loud. The night I sat in the car for 20 minutes before going inside."*  
-This is the trust post. What were you carrying that night? What did you decide when you finally opened the door? Don't resolve it too cleanly — the tension is the point. Close: "Most dads I know have had this night. Almost none of them say it out loud."  
-Format: Talking head (60–90 sec) or written, 200 words max. No carousel — this needs a face or a voice.
+**Thu · Confessional — Talking Head or Written**  
+Hook: *"The night I realised I was becoming the dad I swore I'd never be."*  
+This is Oren's founding moment — seeing himself in his son's confusion, recognising he was replicating what he absorbed. Don't polish it. Raw is the point. End with: *"If you've had that moment — you're not alone. That's what Dads'42 is for."* Format: talking head 60–90 sec, or written 200 words max. No carousel — this needs a face or a voice.
 
-**Fri — Us vs. Them** · Written  
+**Fri · Us vs. Them — Written or Reel**  
 Hook: *"This is not a parenting community. This is a room where men remember who they were built to be."*  
-Drive the contrast: what Dads'42 is not (soft, therapeutic, curated) vs. what it is (grounded, earned, real). Two short paragraphs. End with something that makes a dad feel like he's already inside the tribe just by reading it.  
-Format: Written post. Post on IG + X. Watch the comments — this angle generates them.
+Draw the line hard. Name what you're not (soft, therapeutic, gentle parenting adjacent). Name what you are (grounded, earned, philosophical weight). Close with: *"The door's open if you're built for this."* Post IG + X. Watch the comments — this angle generates them.
 
 ---
 
 ## 🎯 Critical Gap to Tackle
 
-**Gap #1: Founder Story Post**
+**Founder Story Post**
 
-Rule is explicit — if it's not done, it's always first. It's not done.
+The founder interview is done (April 10). All 9 questions answered. Codi has the raw material and can write this now.
 
-Every piece of content this week points dads toward Skool. The Founder Story Post is what closes them. It's the piece a curious dad reads that shifts him from "interesting account" to "this guy gets it." Without it, you're driving traffic into a room with no front wall.
+Why it's the priority: It's the cornerstone the whole room pins to — Skool's first post, the about page, the brand origin hook. Every content piece this week drives dads toward Skool. The Founder Story Post is what closes them — the thing a curious dad reads that shifts him from *interesting account* to *this guy gets it.* Without it, you're driving traffic into a room with no front wall. It also unblocks: Skool seeding (pinned post = first post), about page copy, and ManyChat flow messaging.
 
-**Done looks like:** An 800–1,200 word post (IG long-form or carousel script) that opens with the wound — no blueprint, no role model — runs through the two books that changed everything (Machin, Aurelius), and lands on why Dads'42 exists. Written in Oren's voice, not brand voice. Raw and specific beats polished and general.
+What done looks like: A 300–500 word written post (or 60-sec talking head script) that runs the founding arc — no blueprint, no male role model → the replication fear (seeing himself in his son) → the Machin unlock → the Aurelius proof — and lands on a direct invitation to join. Pinned as #1 post on Skool. Repurposed as about section on dads42.com.
 
 ---
 
 ## 🤝 Community Move
 
-**Skool discussion prompt — post Saturday.**
+**Infiltrate 3 dad communities this week — contribute, don't pitch.**
 
-> *"Which era of fatherhood do you think had it most figured out — and what did we lose when we left it behind?"*
-
-This pulls from the evolution angle (hunter-gatherer → agricultural → industrial) and works because there's no right answer. Every response validates the tribe's shared belief that something was lost and worth recovering. Oren drops a 3-sentence take first to open it up. Respond to the first 5 comments within 30 minutes of posting — that's how the early flywheel starts.
-
-Angle: Identity/Ego + Us vs. Them. Dads who engage here self-select as exactly who you want in the room.
+Pick 3: r/daddit, r/NewDads, r/Parenting on Reddit, or equivalent Facebook groups. 20 minutes, 2–3 substantive comments per community. No links, no Dads'42 mention, zero promo. Just Oren's actual perspective: grounded, specific, earned. The goal is to be the guy who has something real to say before you ever drop the Skool link. Infiltration now (weeks 4–5) pays off when you start pulling people in during weeks 5–6.
 
 ---
 
 ## ⚡ Momentum
 
-- **Completed (Apr 1):** Migrated to 2-file doc standard; restructured `files/` into `docs/`, `src/`, `tools/`
-- **Flagged as Next:** Founder Story Post (Gap #1) — still the first move, still not done
-- **Pending — deploy:** Landing page (`src/dads42-landing.html`) needs to go live on Squarespace before this week's content drives real traffic
-- **Pending — infrastructure:** Instagram bio + link-in-bio (Gap #7) needs to be sharp before posts go out; email capture not yet wired
+- **Done:** Founder Story Interview complete (Apr 10) — all 9 questions answered, copy-ready raw material in hand
+- **Done:** Strategy docs committed to git; brand + 12-week execution framework locked
+- **Next:** Write Founder Story Post — raw material is ready, ship it this week
+- **Open:** Oren's photo on landing page (still "O" placeholder) · Email capture form not wired to service · GTM workspace unpublished (must Submit in GTM UI for tags to fire on live site)
 
 ---
 
-*Generated by Codi · 2026-04-20*
+*Generated by Codi · 2026-04-27*
