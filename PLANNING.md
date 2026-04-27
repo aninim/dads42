@@ -83,6 +83,7 @@
 - [ ] Decide on Niemann: keep all 3, drop all 3, or replace with another artist?
 
 **For Codi (next session):**
+- [x] **Acquire reference images** — 9/25 complete (Sempé 6, Steinberg 1, Tomine 1, Niemann 3). Awaiting Oren's 14 sources.
 - [ ] Score all 25 refs against 8 DNA attributes (≥4/5 threshold). Flag sub-4 as "replace needed."
 - [ ] Write uniform captions per image + document rationale
 - [ ] Crop NYer covers to strip title text (if Oren approves)
