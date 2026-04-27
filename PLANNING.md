@@ -74,9 +74,19 @@
 
 ## Status
 
-**Current phase:** Strategy documentation complete. 12-week execution playbook defined (Skool → TikTok/IG → email → paid). All brand assets ready. **Ready to execute, blocked by one prerequisite.**
+**Current phase:** LoRA reference acquisition in progress. 9/25 images acquired; awaiting 14 more from Oren. Visual identity training pipeline active.
 
-**Active task:** **BLOCKER — Fill dads42-context-checklist.md.** This is the raw material that turns generic content into authentic, specific content that converts. Without it, all downstream work (Founder Story, lead magnet, every hook) will lack specificity. Oren must complete before Codi builds.
+**Active task:** Acquire + curate 25 LoRA training reference images. Awaiting Oren's sources for Steig, Blake, Watterson, Klassen.
+
+**For Oren:**
+- [ ] Source 14 reference images (Tomine +1, Steinberg +1, Steig 4, Blake 3, Watterson 3, Klassen 2) via Pinterest or preferred source. Rename using `NN-artist-scene.jpg` pattern. Drop into `research/style-refs/`.
+- [ ] Decide on Niemann: keep all 3, drop all 3, or replace with another artist?
+
+**For Codi (next session):**
+- [ ] Score all 25 refs against 8 DNA attributes (≥4/5 threshold). Flag sub-4 as "replace needed."
+- [ ] Write uniform captions per image + document rationale
+- [ ] Crop NYer covers to strip title text (if Oren approves)
+- [ ] Present final batch to Oren for approval before training
 
 **Execution Sequence (12 weeks):**
 
@@ -128,6 +138,7 @@
 - [2026-04-09] Lead magnet priority: interactive quiz over PDF (playbook: 20–40% vs 5–10% conversion)
 - [2026-04-09] ManyChat comment-to-DM funnel adopted as primary Instagram growth mechanic (80%+ DM open rate, 15–25% funnel conversion)
 - [2026-04-27] One-off pages unrelated to the dads42 brand split into sibling project [`dads42-extras/`](../dads42-extras/). Each page = own Firebase Hosting site under the `dads42` Firebase project + own subdomain (e.g., `trip.dads42.com`). Keeps dads42 deploy focused on the brand; isolates lifecycle and analytics per page.
+- [2026-04-27] Hybrid reference acquisition for LoRA training: Codi sources NYer artists via Image Republic API (works well for Sempé, Steig, Steinberg, Tomine, Niemann), Oren sources book illustrators via Pinterest (faster, higher quality for Steig, Blake, Watterson, Klassen).
 
 ---
 
@@ -236,3 +247,20 @@
 **Next:**
 
 - Unrelated to today's work, still open: complete context checklist (BLOCKER for content work)
+
+### Session 2026-04-27 (continued — LoRA Reference Curation)
+
+**Completed:**
+- Acquired 9 LoRA training reference images: 6 Sempé, 1 Steinberg (9th Ave), 1 Tomine (Summer Getaway), 3 Niemann (brushgirl, bike, camera) via Image Republic + christophniemann.com
+- Identified 2 blockers for LoRA training: (a) NYer covers have title text baked in—needs cropping, (b) Niemann work is mixed-media photo+paint, not hand-drawn ink+wash—may need to drop/replace
+- Structured reference dataset folder: finalized captions.json, selection-rationale.md, source-credits.md templates in research/style-refs/
+- Removed hardcoded Resend API secrets from PLANNING.md + google-apps-script.gs (replaced with env var references)
+- Committed all project infrastructure: 121 files (+.claude/skills/, assets-for-agent/, content/drafts/, community/, research/, tools/) → pushed to remote
+
+**Decisions:**
+- Split reference acquisition by source type: Codi pulls from Image Republic API (works for NYer-published artists), Oren sources Steig/Blake/Watterson/Klassen via Pinterest (faster for non-NYer book illustrators)
+- Tomine "Summer Getaway" image approved as matching brand DNA
+
+**Next:**
+- Oren sources remaining 14 reference images (Tomine +1, Steinberg +1, Steig 4, Blake 3, Watterson 3, Klassen 2; Niemann decision pending) via Pinterest, drop into research/style-refs/ with NN-artist-scene.jpg naming
+- Codi: score all 25 refs against 8 DNA attributes, write captions, document rationale, present batch for approval before LoRA training
